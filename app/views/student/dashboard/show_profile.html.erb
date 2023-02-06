@@ -1,0 +1,16 @@
+<div class="container-fluid w-25 border rounded shadow mt-5 p-4 text-center bg-light">
+<h1>Profile</h1>
+<% if @student.image.attached? %>
+    <p><%= image_tag @student.image ,width: "200"%></p>
+<% end %>
+<p>ID: <%= current_student.id %></p>
+<p>Name: <%= current_student.name %></p>
+<p>FatherName: <%= current_student.father_name %></p>
+<p>Email: <%= current_student.email %></h1>
+<p>PhoneNumber: <%= current_student.phone_number %></p>
+<p>Date of Birth: <%= current_student.dob %></p>
+<p>Batch Number: <%= current_student.batch_id %></p>
+<p>Current Semester Type: <%= current_student.semesters.last.semester_type%></p>
+<p>Current Semester: <%= current_student.semesters.last.semester_number%></p>
+<%= link_to "Back", student_root_path %>
+</div>
