@@ -1,12 +1,15 @@
+<%= turbo_frame_tag 'main' do %>
+<center>
 <h1>Welcome to the Admin Dashboard</h1>
-
+</center>
 <div class="row">
   <div class="col-sm-4 mt-5 p-4">
     <div class="card" style="width: 18rem;">
       <div class="card-body">
         <h5 class="card-title">Student</h5>
         <p class="card-text"></p>
-        <a href="<%= new_admin_student_path %>" class="btn btn-success">Add Student</a>
+        <a href="<%= new_admin_student_path %>" class="btn btn-info">Add Student</a>
+        
       </div>
     </div>
   </div>
@@ -15,7 +18,7 @@
       <div class="card-body">
         <h5 class="card-title">Teacher</h5>
         <p class="card-text"></p>
-        <a href="<%= new_admin_teacher_path  %>" class="btn btn-success">Add Teacher</a>
+        <a href="<%= new_admin_teacher_path  %>" class="btn btn-info">Add Teacher</a>
       </div>
     </div>
   </div>
@@ -25,7 +28,7 @@
       <div class="card-body">
         <h5 class="card-title">Course</h5>
         <p class="card-text"></p>
-        <a href="<%= new_admin_course_path %>" class="btn btn-success">Add Course</a>
+        <a href="<%= new_admin_course_path %>" class="btn btn-info">Add Course</a>
       </div>
     </div>
   </div>
@@ -37,7 +40,7 @@
       <div class="card-body">
         <h5 class="card-title">Section</h5>
         <p class="card-text"></p>
-        <a href="<%= new_admin_section_path  %>" class="btn btn-success">Add Section</a>
+        <a href="<%= new_admin_section_path  %>" class="btn btn-info">Add Section</a>
       </div>
     </div>
   </div>
@@ -47,10 +50,9 @@
       <div class="card-body">
         <h5 class="card-title">Enrollment</h5>
         <p class="card-text"></p>
-        <a href="<%= new_admin_enrollment_path %>" class="btn btn-success">Add Enrollment</a>
+        <a href="<%= new_admin_enrollment_path %>" class= "btn btn-info">Add Enrollment</a>
       </div>
     </div>
   </div>
 </div>
-
-
+<% end %>

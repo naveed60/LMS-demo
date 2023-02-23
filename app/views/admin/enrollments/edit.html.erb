@@ -1,3 +1,5 @@
+<%=turbo_frame_tag 'main' do%>
+<center>
 <h1>Edit Enrollment</h1>
 <%= form_for [:admin, @enrollment] do |f| %>
 
@@ -25,5 +27,7 @@
   <div class="actions">
     <%= f.submit "Add Enrollment" %>
   </div>
-  <%= link_to "Cancel",admin_enrollments_path,class: "btn btn-outline-success" %>
+  <%= link_to "Cancel",admin_enrollments_path,class: "btn btn-outline-info" %>
 <% end %>
+</center>
+<%end%>

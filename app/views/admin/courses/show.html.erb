@@ -1,3 +1,4 @@
+<%=turbo_frame_tag 'main' do%>
 <h1><%= @course.id %></h1>
 <p><%= @course.name %></p>
 <p><%= @course.coursecode %></h1>
@@ -11,3 +12,4 @@
     <%= link_to "Back", admin_courses_path %>
   </li>
 </ul>
+<%end%>

@@ -2,3 +2,8 @@
 //= link_tree ../../javascript .js
 //= link_tree ../../../vendor/javascript .js
 //= link_tree ../builds
+//= link teacherindex.css
+ //= link student.css
+ //= link course.css
+ //= link enrollment.css
+ //= link section.css

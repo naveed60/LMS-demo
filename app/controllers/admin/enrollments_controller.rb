@@ -2,6 +2,14 @@ class Admin::EnrollmentsController < Admin::MainController
     
     def index
         @enrollments=Enrollment.all
+        @count = @enrollments.count
+        respond_to do |format|
+            format.html
+            format.turbo_stream { render turbo_stream: [turbo_stream.update('counter', partial: 'admin/dashboard/counter'),
+                                                        turbo_stream.update('main', template: 'admin/enrollments/index')                    
+                ] }
+        end
+
     end
 
 

@@ -2,8 +2,10 @@ class Admin::StudentsController < Admin::MainController
 
     def index
         @students=Student.all
+       
+
+       
     end
-    
     def show
         @student=Student.find(params[:id])
     end
@@ -14,7 +16,6 @@ class Admin::StudentsController < Admin::MainController
     
     def create
         @student=Student.new(student_params)
-        
         if @student.save   
             @student.student_semesters.create(semester_id: params[:semester_id].to_i,year: params[:semester_year].to_i)
             flash[:notice] = "Student was successfully created."
@@ -46,7 +47,7 @@ class Admin::StudentsController < Admin::MainController
         redirect_to admin_students_path, status: :see_other
     end
 
-    private
+ 
     def student_params
         params.require(:student).permit(:name,:father_name,:phone_number,:email,:password,:dob,:batch_id, :image)
     end

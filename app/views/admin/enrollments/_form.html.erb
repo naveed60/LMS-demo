@@ -1,3 +1,4 @@
+
 <div class="container-fluid w-25 border rounded shadow mt-5 p-4 text-center bg-light">
 <%= form_for [:admin, enrollment] do |f| %>
   <%= render "admin/shared/error", model: enrollment %>
@@ -25,6 +26,6 @@
   <div class="actions">
     <%= f.submit "Add Enrollment" %>
   </div>
-  <%= link_to "Cancel",admin_enrollments_path,class: "btn btn-outline-success" %>
+  <%= link_to "Cancel",admin_dashboard_index_path,class: "btn btn-outline-info" %>
 <% end %>
 </div>

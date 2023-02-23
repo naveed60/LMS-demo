@@ -1,4 +1,5 @@
-<nav class="navbar navbar-expand-lg bg-light">
+
+<nav class="navbar navbar-expand-lg "style="background-color: #4dd2f2;">
   <div class="container-fluid">
     <a class="navbar-brand" href="<%=admin_root_path%>">Home</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -7,23 +8,23 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="<%= admin_students_path %>">Students</a>
+          <a class="nav-link active" aria-current="page" href="<%= admin_students_path %>" data-turbo-frame='main'>Students</a>
         </li>
         
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="<%= admin_teachers_path %>">Teachers</a>
+          <a class="nav-link active" aria-current="page" href="<%= admin_teachers_path %>" data-turbo-frame='main'>Teachers</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="<%= admin_courses_path %>">Courses</a>
+          <a class="nav-link active" aria-current="page" href="<%= admin_courses_path %>" data-turbo-frame='main'>Courses</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="<%= admin_enrollments_path %>">Enrollments</a>
+          <a class="nav-link active" aria-current="page" href="<%= admin_enrollments_path %> "data-turbo-frame ='main'>Enrollments</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="<%= admin_sections_path %>">Sections</a>
+          <a class="nav-link active" aria-current="page" href="<%= admin_sections_path %>" data-turbo-frame='main'>Sections</a>
         </li>
         <li class="nav-item">
-         <a class="nav-link active" aria-current="page" href="<%= destroy_admin_session_path %>">Logout</a>
+         <a class="nav-link active" aria-current="page" href="<%= destroy_admin_session_path %>" data-turbo-frame='main'>Logout</a>
         </li>
       </ul>
       <form class="d-flex" role="search">

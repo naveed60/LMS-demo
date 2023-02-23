@@ -1,5 +1,7 @@
+
+
 <div class="container-fluid w-25 border rounded shadow mt-5 p-4 text-center bg-light">
-<%= form_for  [:admin, student] do |f| %>
+<%= form_for  [:admin, student], html: {data: {turbo: true}} do |f| %>
   <%= render "admin/shared/error", model: student %>
   <div class="field">
     <%= f.label :name %><br />
@@ -54,9 +56,11 @@
     <%= label_tag :semester_year %><br />
     <%=text_field_tag "semester_year" %>
   </div>
-  <div class="actions">
-    <%= f.submit "Add"%>
-  </div>
-  <%= link_to "Cancel",admin_students_path,class: "btn btn-outline-success" %>
+    <div class="actions"  >
+    <%= f.submit "Add"  %>
+    
+    </div>
+  <%= link_to "Cancel",admin_dashboard_index_path,class: "btn btn-outline-info" %>
 <% end %>
 </div>
+
