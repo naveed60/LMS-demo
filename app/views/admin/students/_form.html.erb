@@ -1,66 +1,68 @@
+<div class="container-fluid w-50 border rounded shadow mt-5 p-4 text-center bg-light">
+  <%= form_for [:admin, student], html: { data: { turbo: true } } do |f| %>
+    <%= render "admin/shared/error", model: student %>
 
-
-<div class="container-fluid w-25 border rounded shadow mt-5 p-4 text-center bg-light">
-<%= form_for  [:admin, student], html: {data: {turbo: true}} do |f| %>
-  <%= render "admin/shared/error", model: student %>
-  <div class="field">
-    <%= f.label :name %><br />
-    <%= f.text_field :name, autofocus: true %>
-  </div>
-
-   <div class="field">
-    <%= f.label :fatherName %><br />
-    <%= f.text_field :father_name, autofocus: true%>
-  </div>
-
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :phonenumber %><br />
-    <%= f.telephone_field :phone_number, autofocus: true %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password %>
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
-  <div class="field">
-    <%= f.label :DOB %><br />
-    <%= f.date_field :dob %>
-  </div>
- <div class="field">
-    <%= f.label :image%><br />
-    <%= f.file_field :image %>
-  </div>
- <div class="field">
-    <%= f.label :batchnumber %><br />
-    <%= f.select(:batch_id, Batch.all.collect {|x| [x.id,x.batch_number]}, {:include_blank => "Select"}, {:class => "some_class"} )%>
-  </div>
-  <div class="field">
-        <%= label_tag :semester %><br />
-        <%= select_tag "semester_id", options_for_select(Semester.all.map {|item| ["#{item.semester_number} - #{item.semester_type}", item.id]}) %>
+    <div class="mb-3">
+      <%= f.label :name, class: "form-label" %>
+      <%= f.text_field :name, class: "form-control", autofocus: true %>
     </div>
 
-  <div class="field">
-    <%= label_tag :semester_year %><br />
-    <%=text_field_tag "semester_year" %>
-  </div>
-    <div class="actions"  >
-    <%= f.submit "Add"  %>
-    
+    <div class="mb-3">
+      <%= f.label :fatherName, class: "form-label" %>
+      <%= f.text_field :father_name, class: "form-control", autofocus: true %>
     </div>
-  <%= link_to "Cancel",admin_dashboard_index_path,class: "btn btn-outline-info" %>
-<% end %>
+
+    <div class="mb-3">
+      <%= f.label :email, class: "form-label" %>
+      <%= f.email_field :email, class: "form-control", autofocus: true, autocomplete: "email" %>
+    </div>
+
+    <div class="mb-3">
+      <%= f.label :phonenumber, class: "form-label" %>
+      <%= f.telephone_field :phone_number, class: "form-control", autofocus: true %>
+    </div>
+
+    <div class="mb-3">
+      <%= f.label :password, class: "form-label" %>
+      <% if @minimum_password_length %>
+        <em>(<%= @minimum_password_length %> characters minimum)</em>
+      <% end %>
+      <%= f.password_field :password, class: "form-control", autocomplete: "new-password" %>
+    </div>
+
+    <div class="mb-3">
+      <%= f.label :password_confirmation, class: "form-label" %>
+      <%= f.password_field :password_confirmation, class: "form-control", autocomplete: "new-password" %>
+    </div>
+
+    <div class="mb-3">
+      <%= f.label :DOB, class: "form-label" %>
+      <%= f.date_field :dob, class: "form-control" %>
+    </div>
+
+    <div class="mb-3">
+      <%= f.label :image, class: "form-label" %>
+      <%= f.file_field :image, class: "form-control" %>
+    </div>
+
+    <div class="mb-3">
+      <%= f.label :batchnumber, class: "form-label" %>
+      <%= f.select(:batch_id, Batch.all.collect { |x| [x.id, x.batch_number] }, { include_blank: "Select" }, { class: "form-select" }) %>
+    </div>
+
+    <div class="mb-3">
+      <%= label_tag :semester %>
+      <%= select_tag "semester_id", options_for_select(Semester.all.map { |item| ["#{item.semester_number} - #{item.semester_type}", item.id] }, class: "form-select"),style:"width:100%;" %>
+    </div>
+
+    <div class="mb-3">
+      <%= label_tag :semester_year %>
+      <%= text_field_tag "semester_year", nil, class: "form-control" %>
+    </div>
+
+    <div class="mb-3">
+      <%= f.submit "Add", class: "btn btn-primary" %>
+      <%= link_to "Cancel", admin_dashboard_index_path, class: "btn btn-outline-info" %>
+    </div>
+  <% end %>
 </div>
-
