@@ -1,20 +1,21 @@
+<div class="container-fluid w-50 border rounded shadow mt-5 p-4 text-center bg-light">
+  <%= form_for [:admin, course] do |f| %>
+    <%= render "admin/shared/error", model: course %>
 
-<div class="container-fluid w-25 border rounded shadow mt-5 p-4 text-center bg-light">
-<%= form_for [:admin, course] do |f| %>
-  <%= render "admin/shared/error", model: course %>
-  <div class="field">
-    <%= f.label :name %><br />
-    <%= f.text_field :name, autofocus: true %>
-  </div>
+    <div class="mb-3">
+      <%= f.label :name, class: "form-label" %>
+      <%= f.text_field :name, class: "form-control", autofocus: true %>
+    </div>
 
-   <div class="field">
-    <%= f.label :coursecode %><br />
-    <%= f.text_field :coursecode, autofocus: true%>
-  </div>
+    <div class="mb-3">
+      <%= f.label :coursecode, class: "form-label" %>
+      <%= f.text_field :coursecode, class: "form-control", autofocus: true %>
+    </div>
 
-  <div class="actions">
-    <%= f.submit "Add" %>
-  </div>
-  <%= link_to "Cancel",admin_dashboard_index_path,class: "btn btn-outline-info"  %>
-<% end %>
+    <div class="mb-3">
+      <%= f.submit "Add", class: "btn btn-primary" %>
+      <%= link_to "Cancel", admin_dashboard_index_path, class: "btn btn-outline-info" %>
+    </div>
+
+  <% end %>
 </div>
