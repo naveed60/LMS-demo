@@ -4,10 +4,10 @@
   "dependencies": {
     "@hotwired/stimulus": "^3.2.2",
     "@popperjs/core": "^2.11.8",
-    "bootstrap": "^5.2.3",
+    "bootstrap": "^5.3.3",
     "bootstrap-icons": "^1.11.3",
-    "sass": "^1.71.1",
-    "stimulus": "^3.2.1",
+    "sass": "^1.57.1",
+    "stimulus": "^3.2.2",
     "stimulus-character-counter": "^4.2.0"
   },
   "scripts": {
