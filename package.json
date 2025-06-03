@@ -6,7 +6,7 @@
     "@popperjs/core": "^2.11.8",
     "bootstrap": "^5.3.6",
     "bootstrap-icons": "^1.11.3",
-    "sass": "^1.86.3",
+    "sass": "^1.89.1",
     "stimulus": "^3.2.2",
     "stimulus-character-counter": "^4.2.0"
   },
