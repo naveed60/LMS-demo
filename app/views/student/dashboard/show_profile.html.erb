@@ -1,16 +1,80 @@
-<div class="container-fluid w-25 border rounded shadow mt-5 p-4 text-center bg-light">
-<h1>Profile</h1>
-<% if @student.image.attached? %>
-    <p><%= image_tag @student.image ,width: "200"%></p>
-<% end %>
-<p>ID: <%= current_student.id %></p>
-<p>Name: <%= current_student.name %></p>
-<p>FatherName: <%= current_student.father_name %></p>
-<p>Email: <%= current_student.email %></h1>
-<p>PhoneNumber: <%= current_student.phone_number %></p>
-<p>Date of Birth: <%= current_student.dob %></p>
-<p>Batch Number: <%= current_student.batch_id %></p>
-<p>Current Semester Type: <%= current_student.semesters.last.semester_type%></p>
-<p>Current Semester: <%= current_student.semesters.last.semester_number%></p>
-<%= link_to "Back", student_root_path %>
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-lg-8 col-md-10">
+      <div class="card shadow-sm">
+        <!-- Profile Header -->
+        <div class="card-header text-white py-4 "style="background-color: rgb(72 200 166) !important;">
+          <div class="d-flex align-items-center">
+            <% if @student.image.attached? %>
+              <%= image_tag @student.image, class: "rounded-circle border border-3 border-white me-4", width: "120", height: "120" %>
+            <% else %>
+              <div class="rounded-circle bg-white text-primary d-flex align-items-center justify-content-center me-4" style="width: 120px; height: 120px;">
+                <i class="bi bi-person-fill" style="font-size: 3rem;"></i>
+              </div>
+            <% end %>
+            <div>
+              <h1 class="mb-1"><%= current_student.name %></h1>
+              <p class="mb-0 opacity-75">Student ID: <%= current_student.id %></p>
+              <p class="mb-0 opacity-75"><%= current_student.email %></p>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Profile Body -->
+        <div class="card-body p-4">
+          <div class="row g-3">
+            <div class="col-md-6">
+              <div class="card h-100 border-0 shadow-sm">
+                <div class="card-body">
+                  <h5 class="card-title text-primary">Personal Information</h5>
+                  <hr>
+                  <div class="mb-3">
+                    <label class="text-muted small">Father's Name</label>
+                    <p class="mb-0 fw-semibold"><%= current_student.father_name %></p>
+                  </div>
+                  <div class="mb-3">
+                    <label class="text-muted small">Phone Number</label>
+                    <p class="mb-0 fw-semibold"><%= current_student.phone_number %></p>
+                  </div>
+                  <div class="mb-3">
+                    <label class="text-muted small">Date of Birth</label>
+                    <p class="mb-0 fw-semibold"><%= current_student.dob.strftime("%B %d, %Y") if current_student.dob %></p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <div class="col-md-6">
+              <div class="card h-100 border-0 shadow-sm">
+                <div class="card-body">
+                  <h5 class="card-title text-primary">Academic Information</h5>
+                  <hr>
+                  <div class="mb-3">
+                    <label class="text-muted small">Batch Number</label>
+                    <p class="mb-0 fw-semibold"><%= current_student.batch_id %></p>
+                  </div>
+                  <div class="mb-3">
+                    <label class="text-muted small">Current Semester Type</label>
+                    <p class="mb-0 fw-semibold"><%= current_student.semesters.last.semester_type %></p>
+                  </div>
+                  <div class="mb-3">
+                    <label class="text-muted small">Current Semester</label>
+                    <p class="mb-0 fw-semibold"><%= current_student.semesters.last.semester_number %></p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Profile Footer -->
+        <div class="card-footer bg-light py-3">
+          <div class="d-flex justify-content-between align-items-center">
+            <span class="text-muted small">Last updated: <%= Time.now.strftime("%b %d, %Y") %></span>
+            <%= link_to "Back to Dashboard", student_root_path, class: "btn btn-primary" %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
