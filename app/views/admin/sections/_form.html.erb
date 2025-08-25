@@ -1,6 +1,6 @@
 <div class="container-fluid w-50 border rounded shadow mt-5 p-4 text-center bg-light">
     <%= form_for [:admin, section] do |f| %>
-      <%= render "admin/shared/error", model: section %>
+      <%= render "shared/error", model: section %>
   
       <div class="mb-3 row">
         <%= f.label :course, class: "col-12 form-label" %><br />

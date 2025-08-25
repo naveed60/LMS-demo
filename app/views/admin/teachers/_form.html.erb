@@ -1,58 +1,73 @@
-<div class="container-fluid w-50 border rounded shadow mt-5 p-4 text-center bg-light">
+<div style="max-width: 600px; margin: 3rem auto; background: #f8f9fa; 
+            border-radius: 10px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); 
+            padding: 2rem;">
+  
+  <h3 style="text-align: center; margin-bottom: 1.5rem; color: #1d8cf8; font-weight: bold;">
+    Add Teacher
+  </h3>
+
   <%= form_for [:admin, teacher] do |f| %>
-    <%= render "admin/shared/error", model: teacher %>
+    <%= render "shared/error", model: teacher %>
 
-    <div class="mb-3">
-      <%= f.label :name, class: "form-label" %>
-      <%= f.text_field :name, class: "form-control", autofocus: true %>
+    <div style="margin-bottom: 1rem;">
+      <%= f.label :name, class: "form-label", style: "font-weight: 500;" %>
+      <%= f.text_field :name, class: "form-control", style: "border-radius: 8px; padding: 0.6rem;" %>
     </div>
 
-    <div class="mb-3">
-      <%= f.label :fatherName, class: "form-label" %>
-      <%= f.text_field :father_name, class: "form-control", autofocus: true %>
+    <div style="margin-bottom: 1rem;">
+      <%= f.label :father_name, "Father Name", class: "form-label", style: "font-weight: 500;" %>
+      <%= f.text_field :father_name, class: "form-control", style: "border-radius: 8px; padding: 0.6rem;" %>
     </div>
 
-    <div class="mb-3">
-      <%= f.label :email, class: "form-label" %>
-      <%= f.email_field :email, class: "form-control", autofocus: true, autocomplete: "email" %>
+    <div style="margin-bottom: 1rem;">
+      <%= f.label :email, class: "form-label", style: "font-weight: 500;" %>
+      <%= f.email_field :email, class: "form-control", autocomplete: "email", style: "border-radius: 8px; padding: 0.6rem;" %>
     </div>
 
-    <div class="mb-3">
-      <%= f.label :phonenumber, class: "form-label" %>
-      <%= f.telephone_field :phone_number, class: "form-control", autofocus: true %>
+    <div style="margin-bottom: 1rem;">
+      <%= f.label :phone_number, "Phone Number", class: "form-label", style: "font-weight: 500;" %>
+      <%= f.telephone_field :phone_number, class: "form-control", style: "border-radius: 8px; padding: 0.6rem;" %>
     </div>
 
-    <div class="mb-3">
-      <%= f.label :password, class: "form-label" %>
+    <div style="margin-bottom: 1rem;">
+      <%= f.label :password, class: "form-label", style: "font-weight: 500;" %>
       <% if @minimum_password_length %>
-        <em>(<%= @minimum_password_length %> characters minimum)</em>
+        <small style="color: gray;">(<%= @minimum_password_length %> characters minimum)</small>
       <% end %>
-      <%= f.password_field :password, class: "form-control", autocomplete: "new-password" %>
+      <%= f.password_field :password, class: "form-control", style: "border-radius: 8px; padding: 0.6rem;" %>
     </div>
 
-    <div class="mb-3">
-      <%= f.label :password_confirmation, class: "form-label" %>
-      <%= f.password_field :password_confirmation, class: "form-control", autocomplete: "new-password" %>
+    <div style="margin-bottom: 1rem;">
+      <%= f.label :password_confirmation, "Confirm Password", class: "form-label", style: "font-weight: 500;" %>
+      <%= f.password_field :password_confirmation, class: "form-control", style: "border-radius: 8px; padding: 0.6rem;" %>
     </div>
 
-    <div class="mb-3">
-      <%= f.label :address, class: "form-label" %>
-      <%= f.text_field :address, class: "form-control" %>
+    <div style="margin-bottom: 1rem;">
+      <%= f.label :address, class: "form-label", style: "font-weight: 500;" %>
+      <%= f.text_field :address, class: "form-control", style: "border-radius: 8px; padding: 0.6rem;" %>
     </div>
 
-    <div class="mb-3">
-      <%= f.label :DOB, class: "form-label" %>
-      <%= f.date_field :dob, class: "form-control" %>
+    <div style="margin-bottom: 1rem;">
+      <%= f.label :dob, "Date of Birth", class: "form-label", style: "font-weight: 500;" %>
+      <%= f.date_field :dob, class: "form-control", style: "border-radius: 8px; padding: 0.6rem;" %>
     </div>
 
-    <div class="mb-3">
-      <%= label_tag :Expertise %>
-      <%= select_tag :course_ids, options_from_collection_for_select(Course.all, :id, :name), { class: "form-select", multiple: true } %>
+    <div style="margin-bottom: 1.5rem;">
+      <%= label_tag :Expertise, "Expertise", style: "font-weight: 500; display: block; margin-bottom: 0.5rem;" %>
+      <%= select_tag :course_ids, 
+          options_from_collection_for_select(Course.all, :id, :name), 
+          { class: "form-select", multiple: true, style: "border-radius: 8px; padding: 0.6rem;" } %>
     </div>
 
-    <div class="mb-3">
-      <%= f.submit "Add", class: "btn btn-primary" %>
-      <%= link_to "Cancel", admin_dashboard_index_path, class: "btn btn-outline-info" %>
+    <div style="text-align: center;">
+      <%= f.submit "Add", class: "btn", style: "background: linear-gradient(90deg, #1d8cf8, #4dd2f2);
+              color: white; padding: 0.6rem 2rem; border-radius: 50px; 
+              font-weight: 500; border: none; transition: 0.3s;" %>
+
+      <%= link_to "Cancel", admin_dashboard_index_path, 
+          style: "margin-left: 0.5rem; padding: 0.6rem 2rem; border-radius: 50px; 
+                  border: 1px solid #1d8cf8; color: #1d8cf8; text-decoration: none;
+                  font-weight: 500; transition: 0.3s;" %>
     </div>
 
   <% end %>
