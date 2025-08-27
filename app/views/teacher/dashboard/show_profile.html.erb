@@ -1,16 +1,65 @@
-<div class="container-fluid w-25 border rounded shadow mt-5 p-4 text-center bg-light">
-<h1>Profile</h1>
-<p>ID: <%= current_teacher.id %></p>
-<p>Name: <%= current_teacher.name %></p>
-<p>FatherName: <%= current_teacher.father_name %></p>
-<p>Email: <%= current_teacher.email %></h1>
-<p>PhoneNumber: <%= current_teacher.phone_number %></p>
-<p>Date of Birth: <%= current_teacher.dob %></p>
-<p>Address: <%= current_teacher.address %></p>
-<% current_teacher.courses.each do |t| %>
-    <tr>
-        <td><%= t.name %>,</td>
-    </tr>
-<% end %>
-<%= link_to "Back", teacher_root_path %></br>                   
+<div class="container py-5">
+  <div class="row justify-content-center">
+    <div class="col-12 col-md-8 col-lg-6">
+      <div class="card shadow-sm">
+        <div class="card-header bg-primary text-white">
+          <h1 class="h4 mb-0">Teacher Profile</h1>
+        </div>
+
+        <div class="card-body">
+          <div class="text-center mb-4">
+            <div class="d-inline-flex align-items-center justify-content-center rounded-circle bg-light border" style="width:72px;height:72px;">
+              <span class="fw-bold text-secondary">
+                <%= (current_teacher.name.to_s.split.map { |w| w[0] }.join.first(2).upcase.presence || "T") %>
+              </span>
+            </div>
+            <div class="mt-2">
+              <span class="badge bg-secondary">ID: <%= current_teacher.id %></span>
+            </div>
+          </div>
+
+          <dl class="row mb-0">
+            <dt class="col-5 col-sm-4">Name</dt>
+            <dd class="col-7 col-sm-8"><%= current_teacher.name %></dd>
+
+            <dt class="col-5 col-sm-4">Father Name</dt>
+            <dd class="col-7 col-sm-8"><%= current_teacher.father_name.presence || "-" %></dd>
+
+            <dt class="col-5 col-sm-4">Email</dt>
+            <dd class="col-7 col-sm-8">
+              <a href="mailto:<%= current_teacher.email %>"><%= current_teacher.email %></a>
+            </dd>
+
+            <dt class="col-5 col-sm-4">Phone</dt>
+            <dd class="col-7 col-sm-8"><%= current_teacher.phone_number.presence || "-" %></dd>
+
+            <dt class="col-5 col-sm-4">Date of Birth</dt>
+            <dd class="col-7 col-sm-8"><%= current_teacher.dob&.strftime("%b %d, %Y") || "-" %></dd>
+
+            <dt class="col-5 col-sm-4">Address</dt>
+            <dd class="col-7 col-sm-8"><%= current_teacher.address.presence || "-" %></dd>
+
+            <dt class="col-5 col-sm-4">Courses</dt>
+            <dd class="col-7 col-sm-8">
+              <% if current_teacher.courses.any? %>
+                <div class="d-flex flex-wrap gap-2">
+                  <% current_teacher.courses.each do |t| %>
+                    <span class="badge bg-info text-dark"><%= t.name %></span>
+                  <% end %>
+                </div>
+              <% else %>
+                <span class="text-muted">No courses assigned</span>
+              <% end %>
+            </dd>
+          </dl>
+        </div>
+
+        <div class="card-footer bg-white d-flex justify-content-between">
+          <%= link_to "Back", teacher_root_path, class: "btn btn-outline-secondary" %>
+          <%# Example edit button if you have a route %>
+          <%#= link_to "Edit Profile", edit_teacher_registration_path, class: "btn btn-primary" %>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
