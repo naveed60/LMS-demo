@@ -1,81 +1,92 @@
 <nav class="navbar navbar-expand-lg"
-     style="background: linear-gradient(90deg, #1d8cf8 0%, #4dd2f2 100%);
+     style="background: linear-gradient(90deg, #981ac1 0%, #4dd2f2 100%);
             box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-            padding: 0.75rem 1rem;">
-  <div class="container-fluid">
-    
-    <%# ==== Brand Link based on role ==== %>
+            padding: 0.75rem 1rem;
+            margin: 0;
+            width: 100%;
+            display: block;">
+  <div class="container-fluid"
+       style="padding-left: 0 !important; padding-right: 0 !important; margin-left: 0 !important; margin-right: 0 !important; width: 100% !important;">
+
+    <%# ==== Brand ==== %>
     <% if admin_signed_in? %>
-      <%= link_to 'Admin Dashboard', admin_root_path, class: 'navbar-brand fw-bold text-uppercase', style: "color: white;" %>
+      <%= link_to 'Admin Dashboard', admin_root_path, class: 'navbar-brand fw-bold text-uppercase', style: "color: white; margin-left: 0;" %>
     <% elsif teacher_signed_in? %>
-      <%= link_to 'Teacher Dashboard', teacher_root_path, class: 'navbar-brand fw-bold text-uppercase', style: "color: white;" %>
+      <%= link_to 'Teacher Dashboard', teacher_root_path, class: 'navbar-brand fw-bold text-uppercase', style: "color: white; margin-left: 0;" %>
     <% elsif student_signed_in? %>
-      <%= link_to 'Student Dashboard', student_root_path, class: 'navbar-brand fw-bold text-uppercase', style: "color: white;" %>
+      <%= link_to 'Student Dashboard', student_root_path, class: 'navbar-brand fw-bold text-uppercase', style: "color: white; margin-left: 0;" %>
     <% else %>
-      <%= link_to 'MyApp', root_path, class: 'navbar-brand fw-bold text-uppercase', style: "color: white;" %>
+      <%= link_to 'MyApp', root_path, class: 'navbar-brand fw-bold text-uppercase', style: "color: white; margin-left: 0;" %>
     <% end %>
 
-    <%# ==== Collapse toggle for mobile ==== %>
+    <%# ==== Mobile Toggler ==== %>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" 
       data-bs-target="#mainNavbar" aria-controls="mainNavbar" aria-expanded="false" 
       aria-label="Toggle navigation" style="border: none;">
       <span class="navbar-toggler-icon"></span>
     </button>
 
-    <div class="collapse navbar-collapse" id="mainNavbar">
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+    <div class="collapse navbar-collapse" id="mainNavbar" style="margin: 0;">
 
-        <%# ==== Admin menu ==== %>
+      <%# ==== Left-aligned links ==== %>
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0" style="margin-left: 0;">
         <% if admin_signed_in? %>
-          <li class="nav-item"><%= link_to 'Students', admin_students_path, class: 'nav-link active', style: "color: white;" %></li>
-          <li class="nav-item"><%= link_to 'Teachers', admin_teachers_path, class: 'nav-link active', style: "color: white;" %></li>
-          <li class="nav-item"><%= link_to 'Courses', admin_courses_path, class: 'nav-link active', style: "color: white;" %></li>
-          <li class="nav-item"><%= link_to 'Enrollments', admin_enrollments_path, class: 'nav-link active', style: "color: white;" %></li>
-          <li class="nav-item"><%= link_to 'Sections', admin_sections_path, class: 'nav-link active', style: "color: white;" %></li>
-          <li class="nav-item"><%= link_to 'Logout', destroy_admin_session_path, class: 'nav-link active', style: "color: white;" %></li>
-
-        <%# ==== Teacher menu ==== %>
+          <li class="nav-item"><%= link_to 'Students', admin_students_path, class: 'nav-link', style: "color: white;" %></li>
+          <li class="nav-item"><%= link_to 'Teachers', admin_teachers_path, class: 'nav-link', style: "color: white;" %></li>
+          <li class="nav-item"><%= link_to 'Courses', admin_courses_path, class: 'nav-link', style: "color: white;" %></li>
+          <li class="nav-item"><%= link_to 'Enrollments', admin_enrollments_path, class: 'nav-link', style: "color: white;" %></li>
+          <li class="nav-item"><%= link_to 'Sections', admin_sections_path, class: 'nav-link', style: "color: white;" %></li>
         <% elsif teacher_signed_in? %>
-          <li class="nav-item"><%= link_to 'Profile', show_profile_teacher_dashboard_index_path, class: 'nav-link active', style: "color: white;" %></li>
-          <li class="nav-item"><%= link_to 'Current Courses', courses_teacher_dashboard_index_path, class: 'nav-link active', style: "color: white;" %></li>
-          <li class="nav-item"><%= link_to 'Past Courses', past_courses_teacher_dashboard_index_path, class: 'nav-link active', style: "color: white;" %></li>
-          <li class="nav-item"><%= link_to 'Logout', destroy_teacher_session_path, class: 'nav-link active', style: "color: white;" %></li>
-
-        <%# ==== Student menu ==== %>
+          <li class="nav-item"><%= link_to 'Profile', show_profile_teacher_dashboard_index_path, class: 'nav-link', style: "color: white;" %></li>
+          <li class="nav-item"><%= link_to 'Current Courses', courses_teacher_dashboard_index_path, class: 'nav-link', style: "color: white;" %></li>
+          <li class="nav-item"><%= link_to 'Past Courses', past_courses_teacher_dashboard_index_path, class: 'nav-link', style: "color: white;" %></li>
         <% elsif student_signed_in? %>
-          <li class="nav-item"><%= link_to 'Profile', show_profile_student_dashboard_index_path, class: 'nav-link active', style: "color: white;" %></li>
-          <li class="nav-item"><%= link_to 'Courses', display_all_courses_student_dashboard_index_path, class: 'nav-link active', style: "color: white;" %></li>
-          <li class="nav-item"><%= link_to 'Transcript', show_transcript_student_dashboard_index_path, class: 'nav-link active', style: "color: white;" %></li>
-          <li class="nav-item"><%= link_to 'Logout', destroy_student_session_path, class: 'nav-link active', style: "color: white;" %></li>
-
-        <%# ==== Guest menu ==== %>
+          <li class="nav-item"><%= link_to 'Profile', show_profile_student_dashboard_index_path, class: 'nav-link', style: "color: white;" %></li>
+          <li class="nav-item"><%= link_to 'Courses', display_all_courses_student_dashboard_index_path, class: 'nav-link', style: "color: white;" %></li>
+          <li class="nav-item"><%= link_to 'Transcript', show_transcript_student_dashboard_index_path, class: 'nav-link', style: "color: white;" %></li>
         <% else %>
           <li class="nav-item"><%= link_to 'About', '#', class: 'nav-link', style: "color: white;" %></li>
           <li class="nav-item"><%= link_to 'Contact', '#', class: 'nav-link', style: "color: white;" %></li>
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="loginDropdown" role="button" 
-               data-bs-toggle="dropdown" aria-expanded="false" style="color: white;">
+        <% end %>
+      </ul>
+
+      <%# ==== Right-aligned login/logout ==== %>
+      <ul class="navbar-nav ms-auto mb-2 mb-lg-0" style="margin-right: 0;">
+        <% if admin_signed_in? %>
+          <li class="nav-item"><%= link_to 'Logout', destroy_admin_session_path, class: 'nav-link', style: "color: white;" %></li>
+        <% elsif teacher_signed_in? %>
+          <li class="nav-item"><%= link_to 'Logout', destroy_teacher_session_path, class: 'nav-link', style: "color: white;" %></li>
+        <% elsif student_signed_in? %>
+          <li class="nav-item"><%= link_to 'Logout', destroy_student_session_path, class: 'nav-link', style: "color: white;" %></li>
+        <% else %>
+          <li class="nav-item dropdown" style="position: relative;">
+            <a class="nav-link dropdown-toggle" href="#" id="loginDropdown" role="button"
+               data-bs-toggle="dropdown" aria-expanded="false"
+               style="color: white;">
               Login
             </a>
-            <ul class="dropdown-menu" style="border-radius: 0.5rem;">
+            <ul class="dropdown-menu dropdown-menu-end"
+                style="border-radius: 0.5rem; display: none; position: absolute; top: 100%; right: 0;">
               <li><%= link_to 'Admin', new_admin_session_path, class: 'dropdown-item' %></li>
               <li><%= link_to 'Student', new_student_session_path, class: 'dropdown-item' %></li>
               <li><%= link_to 'Teacher', new_teacher_session_path, class: 'dropdown-item' %></li>
             </ul>
+            <script>
+              document.addEventListener("DOMContentLoaded", function() {
+                var dropdown = document.getElementById("loginDropdown");
+                var menu = dropdown.nextElementSibling;
+                dropdown.parentElement.addEventListener("mouseenter", function() {
+                  menu.style.display = "block";
+                });
+                dropdown.parentElement.addEventListener("mouseleave", function() {
+                  menu.style.display = "none";
+                });
+              });
+            </script>
           </li>
         <% end %>
-
       </ul>
 
-      <%# ==== Search form ==== %>
-      <form class="d-flex" role="search">
-        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search"
-               style="border-radius: 50px; padding: 0.5rem 1rem;">
-        <button class="btn" type="submit"
-                style="background-color: white; color: #1d8cf8; border-radius: 50px; padding: 0.5rem 1.5rem;">
-          Search
-        </button>
-      </form>
     </div>
   </div>
 </nav>

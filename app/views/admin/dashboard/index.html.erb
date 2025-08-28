@@ -1,58 +1,37 @@
 <%= turbo_frame_tag 'main' do %>
-<center>
-<h1>Welcome to the Admin Dashboard</h1>
-</center>
-<div class="row">
-  <div class="col-sm-4 mt-5 p-4">
-    <div class="card" style="width: 18rem;">
-      <div class="card-body">
-        <h5 class="card-title">Student</h5>
-        <p class="card-text"></p>
-        <a href="<%= new_admin_student_path %>" class="btn btn-info">Add Student</a>
-        
-      </div>
+  <div class="container-fluid py-4">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+      <h1 class="h3 text-primary fw-bold">
+        <i class="bi bi-speedometer2 me-2"></i> Admin Dashboard
+      </h1>
+      <span class="text-muted small">Manage your platform with ease</span>
     </div>
-  </div>
-  <div class="col-sm-4 mt-5 p-4">
-    <div class="card" style="width: 18rem;">
-      <div class="card-body">
-        <h5 class="card-title">Teacher</h5>
-        <p class="card-text"></p>
-        <a href="<%= new_admin_teacher_path  %>" class="btn btn-info">Add Teacher</a>
-      </div>
-    </div>
-  </div>
-  
-  <div class="col-sm-4 mt-5 p-4">
-    <div class="card" style="width: 18rem;">
-      <div class="card-body">
-        <h5 class="card-title">Course</h5>
-        <p class="card-text"></p>
-        <a href="<%= new_admin_course_path %>" class="btn btn-info">Add Course</a>
-      </div>
-    </div>
-  </div>
-</div>
 
-<div class="row">
-  <div class="col-sm-4 mt-5 p-4">
-    <div class="card" style="width: 18rem;">
-      <div class="card-body">
-        <h5 class="card-title">Section</h5>
-        <p class="card-text"></p>
-        <a href="<%= new_admin_section_path  %>" class="btn btn-info">Add Section</a>
-      </div>
+    <div class="row g-4">
+      <% dashboard_items = [
+        { title: "Students",    path: new_admin_student_path,    icon: "people",      color: "primary" },
+        { title: "Teachers",    path: new_admin_teacher_path,    icon: "person-badge", color: "success" },
+        { title: "Courses",     path: new_admin_course_path,     icon: "book",         color: "warning" },
+        { title: "Sections",    path: new_admin_section_path,    icon: "columns-gap",  color: "info" },
+        { title: "Enrollments", path: new_admin_enrollment_path, icon: "clipboard-check", color: "danger" }
+      ] %>
+
+      <% dashboard_items.each do |item| %>
+        <div class="col-12 col-sm-6 col-lg-4">
+          <div class="card shadow-sm border-0 h-100 hover-shadow" style="background-color: #dedfd4;">
+            <div class="card-body text-center py-4">
+              <div class="display-4 text-<%= item[:color] %> mb-3">
+                <i class="bi bi-<%= item[:icon] %>"></i>
+              </div>
+              <h5 class="card-title fw-bold"><%= item[:title] %></h5>
+              <p class="text-muted small mb-3">Manage <%= item[:title].downcase %> records</p>
+              <a href="<%= item[:path] %>" class="btn btn-outline-<%= item[:color] %>">
+                <i class="bi bi-plus-lg me-1"></i> Add <%= item[:title].singularize %>
+              </a>
+            </div>
+          </div>
+        </div>
+      <% end %>
     </div>
   </div>
-  
-  <div class="col-sm-4 mt-5 p-4">
-    <div class="card" style="width: 18rem;">
-      <div class="card-body">
-        <h5 class="card-title">Enrollment</h5>
-        <p class="card-text"></p>
-        <a href="<%= new_admin_enrollment_path %>" class= "btn btn-info">Add Enrollment</a>
-      </div>
-    </div>
-  </div>
-</div>
 <% end %>
