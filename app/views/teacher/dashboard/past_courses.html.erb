@@ -1,30 +1,32 @@
-<html>
-<head>
-<style>
-table, th, td {
-  border: 1px solid black;
-  border-collapse: collapse;
-}
-</style>
-</head>
-<body>
-<table id="enrollment" border="3" layout= "fixed" width=" 100%"  >
-<tr>
-    <th>ID</th>
-    <th>Course</th>
-    <th>Section</th>
-    <th>Semester No</th>
-    <th>Semester Type</th>
-</tr>
-<% @teacher_sections.each do |s| %>
-    <% s.enrollments.where.not(grade_id:11).each do |e| %>
+<div class="container my-5">
+  <h2 class="mb-4 text-center fw-bold">Other Courses</h2>
+  
+  <div class="table-responsive shadow-sm rounded-4 overflow-hidden">
+    <table class="table table-striped table-hover mb-0 align-middle text-center"
+           style="border-radius:1rem; overflow:hidden;">
+      <thead class="text-white" style="background:linear-gradient(90deg,#20c997,#0dcaf0);">
         <tr>
-            <td><%= e.section.course.id %></td>
-            <td><%= e.section.course.name %></td>
-            <td><%= e.section.name %></td>
-            <td><%= e.semester.semester_number %></td>
-            <td><%= e.semester.semester_type %></td>
+          <th scope="col">ID</th>
+          <th scope="col">Course</th>
+          <th scope="col">Section</th>
+          <th scope="col">Semester No</th>
+          <th scope="col">Semester Type</th>
         </tr>
-       <% break %>
-    <% end %>
-<% end %>
+      </thead>
+      <tbody>
+        <% @teacher_sections.each do |s| %>
+          <% s.enrollments.where.not(grade_id: 11).each do |e| %>
+            <tr>
+              <td class="fw-semibold"><%= e.section.course.id %></td>
+              <td><%= e.section.course.name %></td>
+              <td><%= e.section.name %></td>
+              <td><%= e.semester.semester_number %></td>
+              <td><%= e.semester.semester_type %></td>
+            </tr>
+            <% break %>
+          <% end %>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>

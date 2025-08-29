@@ -3,7 +3,7 @@
     <div class="col-lg-8 col-md-10">
       <div class="card shadow-sm">
         <!-- Profile Header -->
-        <div class="card-header text-white py-4 "style="background-color: rgb(72 200 166) !important;">
+        <div class="card-header text-white py-4 "style="background-color: rgb(132 76 209) !important;">
           <div class="d-flex align-items-center">
             <% if @student.image.attached? %>
               <%= image_tag @student.image, class: "rounded-circle border border-3 border-white me-4", width: "120", height: "120" %>
@@ -71,7 +71,9 @@
         <div class="card-footer bg-light py-3">
           <div class="d-flex justify-content-between align-items-center">
             <span class="text-muted small">Last updated: <%= Time.now.strftime("%b %d, %Y") %></span>
-            <%= link_to "Back to Dashboard", student_root_path, class: "btn btn-primary" %>
+            <%= link_to "Back to Dashboard", student_root_path,
+                class: 'btn btn-sm px-3 rounded-pill',
+                style: "background-color:#6f42c1; color:white; border:none; font-weight:500; padding:10px;" %>
           </div>
         </div>
       </div>

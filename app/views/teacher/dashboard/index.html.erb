@@ -1,3 +1,53 @@
-<center>
-<h1>Teacher Dashboard</h1>
-</center>
+<div class="container my-5">
+  <div class="row g-4">
+    <% cards = [
+      {
+        icon: "👤",
+        title: "Profile",
+        description: "View and update your personal information.",
+        link_text: "View Profile",
+        link_path: show_profile_teacher_dashboard_index_path,
+        bg_color: "#dfe4e9",
+        btn_color: "#0d6efd",
+        hover_text_color: "#fff"
+      },
+      {
+        icon: "📚",
+        title: "Courses",
+        description: "Manage and update your assigned courses.",
+        link_text: "Manage Courses",
+        link_path: courses_teacher_dashboard_index_path,
+        bg_color: "#dfe4e9",
+        btn_color: "#198754",
+        hover_text_color: "#fff"
+      },
+      {
+        icon: "🧑‍🎓",
+        title: "Past Courses",
+        description: "View and manage your Courses' progress.",
+        link_text: "View Past Courses",
+        link_path: past_courses_teacher_dashboard_index_path,
+        bg_color: "#dfe4e9",
+        btn_color: "#ffc107",
+        hover_text_color: "#212529"
+      }
+    ] %>
+
+    <% cards.each do |c| %>
+      <div class="col-md-4">
+        <div class="card shadow-sm border-0 h-100 rounded-4"
+             style="background-color:<%= c[:bg_color] %>; transition:box-shadow 0.2s ease-in-out;">
+          <div class="card-body text-center">
+            <div class="display-4 mb-3"><%= c[:icon] %></div>
+            <h5 class="fw-bold"><%= c[:title] %></h5>
+            <p class="text-muted small"><%= c[:description] %></p>
+            <%= link_to c[:link_text], c[:link_path],
+                style: "display:inline-block; background-color:transparent; border:2px solid transparent; border-radius:50rem; padding:0.5rem 1.5rem; font-weight:600; color:#{c[:btn_color]}; text-decoration:none; transition:all 0.2s ease-in-out;",
+                onmouseover: "this.style.backgroundColor='#{c[:btn_color]}'; this.style.color='#{c[:hover_text_color]}'; this.style.borderColor='#{c[:btn_color]}';",
+                onmouseout: "this.style.backgroundColor='transparent'; this.style.color='#{c[:btn_color]}'; this.style.borderColor='transparent';" %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>

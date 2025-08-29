@@ -1,50 +1,33 @@
-<head>
-<style>
-table {
-  font-family: arial, sans-serif;
-  border-collapse: collapse;
-  width: 100%;
-}
+<div class="container my-5">
+  <h2 class="mb-4 text-center fw-bold">Transcript</h2>
 
-td, th {
-  border: 1px solid #dddddd;
-  text-align: left;
-  padding: 8px;
-}
-
-tr:nth-child(even) {
-  background-color: #dddddd;
-}
-</style>
-</head>
-<body>
-
-<center>
-<h1>Transcript</h1>
-</center>
-<table id="enrollment" border="3" layout= "fixed" width=" 100%"  >
-<tr>
-    <th>ID</th>
-    <th>Course</th>
-    <th>Semester</th>
-    <th>Semester No</th>
-    <th>Grade</th>
-  </tr>
-
-  <% @semesters.each do |s| %>
-    <% s.enrollments.where(student_id:current_student.id).each do |e|%>
-      <% if e.grade_id!=11 %>
+  <div class="table-responsive shadow-sm rounded-4 overflow-hidden">
+    <table class="table table-striped table-hover mb-0 align-middle text-center"
+           style="border-radius:1rem; overflow:hidden;">
+      <thead class="text-white" style="background:linear-gradient(90deg,#20c997,#0dcaf0);">
         <tr>
-          <td><%= e.id %></td>
-          <td><%= e.section.course.name %></td>
-          <td><%= e.semester.semester_type %></td>
-          <td><%= e.semester.semester_number%></td>
-          <td><%= e.grade.letter%></td>
+          <th scope="col">ID</th>
+          <th scope="col">Course</th>
+          <th scope="col">Semester</th>
+          <th scope="col">Semester No</th>
+          <th scope="col">Grade</th>
         </tr>
-      <% end %>
-    <% end %>
-  <% end %>
-  
-
-  
-
+      </thead>
+      <tbody>
+        <% @semesters.each do |s| %>
+          <% s.enrollments.where(student_id: current_student.id).each do |e| %>
+            <% if e.grade_id != 11 %>
+              <tr>
+                <td class="fw-semibold"><%= e.id %></td>
+                <td><%= e.section.course.name %></td>
+                <td><%= e.semester.semester_type %></td>
+                <td><%= e.semester.semester_number %></td>
+                <td><%= e.grade.letter %></td>
+              </tr>
+            <% end %>
+          <% end %>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>
