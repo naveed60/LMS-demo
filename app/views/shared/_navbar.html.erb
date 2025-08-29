@@ -16,7 +16,7 @@
     <% elsif student_signed_in? %>
       <%= link_to 'Student Dashboard', student_root_path, class: 'navbar-brand fw-bold text-uppercase', style: "color: white; margin-left: 0;" %>
     <% else %>
-      <%= link_to 'MyApp', root_path, class: 'navbar-brand fw-bold text-uppercase', style: "color: white; margin-left: 0;" %>
+      <%= link_to 'Learning Mangament System', root_path, class: 'navbar-brand fw-bold text-uppercase', style: "color: white; margin-left: 0;" %>
     <% end %>
 
     <%# ==== Mobile Toggler ==== %>
@@ -45,8 +45,6 @@
           <li class="nav-item"><%= link_to 'Courses', display_all_courses_student_dashboard_index_path, class: 'nav-link', style: "color: white;" %></li>
           <li class="nav-item"><%= link_to 'Transcript', show_transcript_student_dashboard_index_path, class: 'nav-link', style: "color: white;" %></li>
         <% else %>
-          <li class="nav-item"><%= link_to 'About', '#', class: 'nav-link', style: "color: white;" %></li>
-          <li class="nav-item"><%= link_to 'Contact', '#', class: 'nav-link', style: "color: white;" %></li>
         <% end %>
       </ul>
 
