@@ -1,7 +1,47 @@
+<%= render 'shared/navbar' %>
 
-<%= render 'shared/navbar'%>
-<center>
+<!-- Hero Section -->
+<div class="text-center text-white py-5"
+     style="background: linear-gradient(90deg, #6a11cb, #2575fc);">
+  <div class="container">
+    <h1 class="fw-bold display-4 mb-3">Welcome to the LMS</h1>
+    <p class="lead mb-4">
+      Your personalized gateway to learning, teaching, and academic success.
+    </p>
+    <div class="d-flex justify-content-center gap-3">
+      <%= link_to 'Login as Student', new_student_session_path,
+          style: "background-color:transparent; border:2px solid #fff; color:#fff; padding:0.5rem 1.5rem; border-radius:50rem; font-weight:600; text-decoration:none; transition:all 0.3s ease-in-out;",
+          onmouseover: "this.style.backgroundColor='#fff'; this.style.color='#2575fc';",
+          onmouseout: "this.style.backgroundColor='transparent'; this.style.color='#fff';" %>
 
-<h1>Welcome to the LMS</h1>
-</center>
+      <%= link_to 'Login as Teacher', new_teacher_session_path,
+          style: "background-color:#ffc107; border:2px solid #ffc107; color:#212529; padding:0.5rem 1.5rem; border-radius:50rem; font-weight:600; text-decoration:none; transition:all 0.3s ease-in-out;",
+          onmouseover: "this.style.backgroundColor='#e0a800'; this.style.borderColor='#e0a800';",
+          onmouseout: "this.style.backgroundColor='#ffc107'; this.style.borderColor='#ffc107';" %>
+    </div>
+  </div>
+</div>
 
+<!-- Feature Cards -->
+<div class="container my-5">
+  <div class="row g-4">
+    <% features = [
+      { icon: "📚", title: "Courses", text: "Browse and manage all your course enrollments." },
+      { icon: "🧑‍🏫", title: "Teachers", text: "Connect with experienced educators and mentors." },
+      { icon: "🎓", title: "Progress", text: "Track grades and academic milestones in real time." }
+    ] %>
+
+    <% features.each do |f| %>
+      <div class="col-md-4">
+        <div class="card shadow-sm border-0 h-100 rounded-4"
+             style="background-color:#f8f9fa; transition:box-shadow 0.2s ease-in-out;">
+          <div class="card-body text-center">
+            <div class="display-4 mb-3"><%= f[:icon] %></div>
+            <h5 class="fw-bold mb-2"><%= f[:title] %></h5>
+            <p class="text-muted small mb-0"><%= f[:text] %></p>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
