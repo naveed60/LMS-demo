@@ -2,6 +2,7 @@ class Admin::EnrollmentsController < Admin::MainController
     
     def index
         @enrollments=Enrollment.all
+        puts "==================#{@enrollments.inspect}=================="
         @count = @enrollments.count
         respond_to do |format|
             format.html
