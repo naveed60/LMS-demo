@@ -53,11 +53,26 @@
       <%# ==== Right-aligned login/logout ==== %>
       <ul class="navbar-nav ms-auto mb-2 mb-lg-0" style="margin-right: 0;">
         <% if admin_signed_in? %>
-          <li class="nav-item"><%= link_to 'Logout', destroy_admin_session_path, class: 'nav-link', style: "color: white;" %></li>
+          <li class="nav-item">
+            <%= link_to 'Logout', destroy_admin_session_path,
+                data: { turbo_method: :delete },
+                class: 'btn btn-sm px-3 rounded-pill',
+                style: "background-color:#6f42c1; color:white; border:none; font-weight:500; padding:10px;" %>
+          </li>
         <% elsif teacher_signed_in? %>
-          <li class="nav-item"><%= link_to 'Logout', destroy_teacher_session_path, class: 'nav-link', style: "color: white;" %></li>
+          <li class="nav-item">
+            <%= link_to 'Logout', destroy_teacher_session_path,
+                data: { turbo_method: :delete },
+                class: 'btn btn-sm px-3 rounded-pill',
+                style: "background-color:#6f42c1; color:white; border:none; font-weight:500;padding:10px;" %>
+          </li>
         <% elsif student_signed_in? %>
-          <li class="nav-item"><%= link_to 'Logout', destroy_student_session_path, class: 'nav-link', style: "color: white;" %></li>
+          <li class="nav-item">
+            <%= link_to 'Logout', destroy_student_session_path,
+                data: { turbo_method: :delete },
+                class: 'btn btn-sm px-3 rounded-pill',
+                style: "background-color:#6f42c1; color:white; border:none; font-weight:500;padding:10px;" %>
+          </li>
         <% else %>
           <li class="nav-item dropdown" style="position: relative;">
             <a class="nav-link dropdown-toggle" href="#" id="loginDropdown" role="button"
