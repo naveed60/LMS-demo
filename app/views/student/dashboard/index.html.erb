@@ -1,3 +1,53 @@
-<center>
-<h1>Student Panel</h1>
-</center>
+<div class="container my-5">
+  <div class="row g-4">
+
+    <!-- Profile Card -->
+    <div class="col-md-4">
+      <div class="card shadow-sm border-0 h-100 rounded-4"
+           style="background-color:#dfe4e9; transition:box-shadow 0.2s ease-in-out;">
+        <div class="card-body text-center">
+          <div class="display-4 mb-3">👤</div>
+          <h5 class="fw-bold">Profile</h5>
+          <p class="text-muted small">View and update your personal information.</p>
+          <%= link_to 'View Profile', show_profile_student_dashboard_index_path,
+              style: "display:inline-block; background-color:transparent; border:2px solid transparent; border-radius:50rem; padding:0.5rem 1.5rem; font-weight:600; color:#0d6efd; text-decoration:none; transition:all 0.2s ease-in-out;",
+              onmouseover: "this.style.backgroundColor='#0d6efd'; this.style.color='#fff'; this.style.borderColor='#0d6efd';",
+              onmouseout: "this.style.backgroundColor='transparent'; this.style.color='#0d6efd'; this.style.borderColor='transparent';" %>
+        </div>
+      </div>
+    </div>
+
+    <!-- Courses Card -->
+    <div class="col-md-4">
+      <div class="card shadow-sm border-0 h-100 rounded-4"
+           style="background-color:#dfe4e9; transition:box-shadow 0.2s ease-in-out;">
+        <div class="card-body text-center">
+          <div class="display-4 mb-3">📚</div>
+          <h5 class="fw-bold">Courses</h5>
+          <p class="text-muted small">Browse and manage your course enrollments.</p>
+          <%= link_to 'View Courses', display_all_courses_student_dashboard_index_path,
+              style: "display:inline-block; background-color:transparent; border:2px solid transparent; border-radius:50rem; padding:0.5rem 1.5rem; font-weight:600; color:#198754; text-decoration:none; transition:all 0.2s ease-in-out;",
+              onmouseover: "this.style.backgroundColor='#198754'; this.style.color='#fff'; this.style.borderColor='#198754';",
+              onmouseout: "this.style.backgroundColor='transparent'; this.style.color='#198754'; this.style.borderColor='transparent';" %>
+        </div>
+      </div>
+    </div>
+
+    <!-- Transcript Card -->
+    <div class="col-md-4">
+      <div class="card shadow-sm border-0 h-100 rounded-4"
+           style="background-color:#dfe4e9; transition:box-shadow 0.2s ease-in-out;">
+        <div class="card-body text-center">
+          <div class="display-4 mb-3">📝</div>
+          <h5 class="fw-bold">Transcript</h5>
+          <p class="text-muted small">Check your grades and academic progress.</p>
+          <%= link_to 'View Transcript', show_transcript_student_dashboard_index_path,
+              style: "display:inline-block; background-color:transparent; border:2px solid transparent; border-radius:50rem; padding:0.5rem 1.5rem; font-weight:600; color:#ffc107; text-decoration:none; transition:all 0.2s ease-in-out;",
+              onmouseover: "this.style.backgroundColor='#ffc107'; this.style.color='#212529'; this.style.borderColor='#ffc107';",
+              onmouseout: "this.style.backgroundColor='transparent'; this.style.color='#ffc107'; this.style.borderColor='transparent';" %>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
