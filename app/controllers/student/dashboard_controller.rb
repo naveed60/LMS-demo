@@ -14,7 +14,7 @@ class Student::DashboardController < ApplicationController
     end
 
     def display_all_courses
-        @enrollments=current_student.semesters.where(id:current_student.student_semesters.last.semester_id)[0].enrollments.where(grade_id:11,student_id:current_student.id)
+        @enrollments=current_student.semesters.where(id:current_student.student_semesters.last.semester_id)[0].enrollments.where(student_id:current_student.id)
     end
     def upload_image
         @student=Student.find(current_student.id)
