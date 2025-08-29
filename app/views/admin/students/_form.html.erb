@@ -1,86 +1,118 @@
-<div style="max-width: 650px; margin: 3rem auto; background: #f8f9fa;
-            border-radius: 10px; box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-            padding: 2rem;">
-  
-  <h3 style="text-align: center; margin-bottom: 1.5rem; color: #1d8cf8; font-weight: bold;">
-    Add Student
-  </h3>
+<div style="max-width:650px; margin:3rem auto; border-radius:10px; 
+            box-shadow:0 4px 10px rgba(0,0,0,0.1); overflow:hidden;">
 
-  <%= form_for [:admin, student], html: { data: { turbo: true } } do |f| %>
-    <%= render "shared/error", model: student %>
+  <!-- Card Header -->
+  <div style="background-color:#6f42c1; color:white; padding:1rem 1.5rem;">
+    <h3 style="margin:0; font-size:1.5rem; font-weight:bold; display:flex; align-items:center;">
+      <i class="bi bi-person-plus-fill" style="margin-right:0.5rem;"></i> Add Student
+    </h3>
+  </div>
 
-    <div style="margin-bottom: 1rem;">
-      <%= f.label :name, class: "form-label", style: "font-weight: 500;" %>
-      <%= f.text_field :name, class: "form-control", style: "border-radius: 8px; padding: 0.6rem;" %>
-    </div>
+  <!-- Card Body -->
+  <div style="background:#f8f9fa; padding:2rem;">
+    <%= form_for [:admin, student], html: { data: { turbo: true } } do |f| %>
+      <%= render "shared/error", model: student %>
 
-    <div style="margin-bottom: 1rem;">
-      <%= f.label :father_name, "Father Name", class: "form-label", style: "font-weight: 500;" %>
-      <%= f.text_field :father_name, class: "form-control", style: "border-radius: 8px; padding: 0.6rem;" %>
-    </div>
+      <%# Name %>
+      <div style="margin-bottom:1rem;">
+        <%= f.label :name, class: "form-label", style:"font-weight:600;" %>
+        <%= f.text_field :name, class:"form-control form-control-lg",
+            style:"border-radius:50rem; padding:0.75rem 1rem; font-size:1rem;" %>
+      </div>
 
-    <div style="margin-bottom: 1rem;">
-      <%= f.label :email, class: "form-label", style: "font-weight: 500;" %>
-      <%= f.email_field :email, class: "form-control", autocomplete: "email", style: "border-radius: 8px; padding: 0.6rem;" %>
-    </div>
+      <%# Father Name %>
+      <div style="margin-bottom:1rem;">
+        <%= f.label :father_name, "Father Name", class:"form-label", style:"font-weight:600;" %>
+        <%= f.text_field :father_name, class:"form-control form-control-lg",
+            style:"border-radius:50rem; padding:0.75rem 1rem; font-size:1rem;" %>
+      </div>
 
-    <div style="margin-bottom: 1rem;">
-      <%= f.label :phone_number, "Phone Number", class: "form-label", style: "font-weight: 500;" %>
-      <%= f.telephone_field :phone_number, class: "form-control", style: "border-radius: 8px; padding: 0.6rem;" %>
-    </div>
+      <%# Email %>
+      <div style="margin-bottom:1rem;">
+        <%= f.label :email, class:"form-label", style:"font-weight:600;" %>
+        <%= f.email_field :email, class:"form-control form-control-lg", autocomplete:"email",
+            style:"border-radius:50rem; padding:0.75rem 1rem; font-size:1rem;" %>
+      </div>
 
-    <div style="margin-bottom: 1rem;">
-      <%= f.label :password, class: "form-label", style: "font-weight: 500;" %>
-      <% if @minimum_password_length %>
-        <small style="color: gray;">(<%= @minimum_password_length %> characters minimum)</small>
-      <% end %>
-      <%= f.password_field :password, class: "form-control", style: "border-radius: 8px; padding: 0.6rem;" %>
-    </div>
+      <%# Phone Number %>
+      <div style="margin-bottom:1rem;">
+        <%= f.label :phone_number, "Phone Number", class:"form-label", style:"font-weight:600;" %>
+        <%= f.telephone_field :phone_number, class:"form-control form-control-lg",
+            style:"border-radius:50rem; padding:0.75rem 1rem; font-size:1rem;" %>
+      </div>
 
-    <div style="margin-bottom: 1rem;">
-      <%= f.label :password_confirmation, "Confirm Password", class: "form-label", style: "font-weight: 500;" %>
-      <%= f.password_field :password_confirmation, class: "form-control", style: "border-radius: 8px; padding: 0.6rem;" %>
-    </div>
+      <%# Password %>
+      <div style="margin-bottom:1rem;">
+        <%= f.label :password, class:"form-label", style:"font-weight:600;" %>
+        <% if @minimum_password_length %>
+          <small style="color:gray;">(<%= @minimum_password_length %> characters minimum)</small>
+        <% end %>
+        <%= f.password_field :password, class:"form-control form-control-lg",
+            style:"border-radius:50rem; padding:0.75rem 1rem; font-size:1rem;" %>
+      </div>
 
-    <div style="margin-bottom: 1rem;">
-      <%= f.label :dob, "Date of Birth", class: "form-label", style: "font-weight: 500;" %>
-      <%= f.date_field :dob, class: "form-control", style: "border-radius: 8px; padding: 0.6rem;" %>
-    </div>
+      <%# Confirm Password %>
+      <div style="margin-bottom:1rem;">
+        <%= f.label :password_confirmation, "Confirm Password", class:"form-label", style:"font-weight:600;" %>
+        <%= f.password_field :password_confirmation, class:"form-control form-control-lg",
+            style:"border-radius:50rem; padding:0.75rem 1rem; font-size:1rem;" %>
+      </div>
 
-    <div style="margin-bottom: 1rem;">
-      <%= f.label :image, class: "form-label", style: "font-weight: 500;" %>
-      <%= f.file_field :image, class: "form-control", style: "border-radius: 8px; padding: 0.6rem;" %>
-    </div>
+      <%# DOB %>
+      <div style="margin-bottom:1rem;">
+        <%= f.label :dob, "Date of Birth", class:"form-label", style:"font-weight:600;" %>
+        <%= f.date_field :dob, class:"form-control form-control-lg",
+            style:"border-radius:50rem; padding:0.75rem 1rem; font-size:1rem;" %>
+      </div>
 
-    <div style="margin-bottom: 1rem;">
-      <%= f.label :batch_id, "Batch Number", class: "form-label", style: "font-weight: 500;" %>
-      <%= f.select :batch_id, Batch.all.collect { |x| [x.batch_number, x.id] }, 
-            { include_blank: "Select" }, 
-            { class: "form-select", style: "border-radius: 8px; padding: 0.6rem;" } %>
-    </div>
+      <%# Image %>
+      <div style="margin-bottom:1rem;">
+        <%= f.label :image, class:"form-label", style:"font-weight:600;" %>
+        <%= f.file_field :image, class:"form-control form-control-lg",
+            style:"border-radius:50rem; padding:0.75rem 1rem; font-size:1rem;" %>
+      </div>
 
-    <div style="margin-bottom: 1rem;">
-      <%= label_tag :semester, "Semester", style: "font-weight: 500; display: block; margin-bottom: 0.5rem;" %>
-      <%= select_tag "semester_id", 
-            options_for_select(Semester.all.map { |item| ["#{item.semester_number} - #{item.semester_type}", item.id] }), 
-            class: "form-select", style: "width: 100%; border-radius: 8px; padding: 0.6rem;" %>
-    </div>
+      <%# Batch %>
+      <div style="margin-bottom:1rem;">
+        <%= f.label :batch_id, "Batch Number", class:"form-label", style:"font-weight:600;" %>
+        <%= f.select :batch_id, Batch.all.collect { |x| [x.batch_number, x.id] },
+              { include_blank:"Select" },
+              { class:"form-select form-select-lg",
+                style:"border-radius:50rem; padding:0.75rem 1rem; font-size:1rem;" } %>
+      </div>
 
-    <div style="margin-bottom: 1.5rem;">
-      <%= label_tag :semester_year, "Semester Year", style: "font-weight: 500; display: block; margin-bottom: 0.5rem;" %>
-      <%= text_field_tag "semester_year", nil, class: "form-control", style: "border-radius: 8px; padding: 0.6rem;" %>
-    </div>
+      <%# Semester %>
+      <div style="margin-bottom:1rem;">
+        <%= label_tag :semester, "Semester",
+            style:"font-weight:600; display:block; margin-bottom:0.5rem;" %>
+        <%= select_tag "semester_id",
+              options_for_select(Semester.all.map { |item| ["#{item.semester_number} - #{item.semester_type}", item.id] }),
+              class:"form-select form-select-lg",
+              style:"border-radius:50rem; padding:0.75rem 1rem; font-size:1rem;" %>
+      </div>
 
-    <div style="text-align: center;">
-      <%= f.submit "Add", class: "btn", style: "background: linear-gradient(90deg, #1d8cf8, #4dd2f2);
-              color: white; padding: 0.6rem 2rem; border-radius: 50px;
-              font-weight: 500; border: none; transition: 0.3s;" %>
+      <%# Semester Year %>
+      <div style="margin-bottom:1.5rem;">
+        <%= label_tag :semester_year, "Semester Year",
+            style:"font-weight:600; display:block; margin-bottom:0.5rem;" %>
+        <%= text_field_tag "semester_year", nil, class:"form-control form-control-lg",
+            style:"border-radius:50rem; padding:0.75rem 1rem; font-size:1rem;" %>
+      </div>
 
-      <%= link_to "Cancel", admin_dashboard_index_path,
-          style: "margin-left: 0.5rem; padding: 0.6rem 2rem; border-radius: 50px;
-                  border: 1px solid #1d8cf8; color: #1d8cf8; text-decoration: none;
-                  font-weight: 500; transition: 0.3s;" %>
-    </div>
+      <%# Actions %>
+      <div style="text-align:center;">
+        <%= f.submit "Add",
+            class:"btn btn-primary",
+            style:"background-color:#6f42c1; border-color:#6f42c1;
+                   color:white; padding:0.6rem 2rem; border-radius:50rem;
+                   font-weight:600; border:none;" %>
 
-  <% end %>
+        <%= link_to "Cancel", admin_dashboard_index_path,
+            style:"margin-left:0.5rem; padding:0.6rem 2rem; border-radius:50rem;
+                   border:1px solid #6f42c1; color:#6f42c1;
+                   text-decoration:none; font-weight:600;" %>
+      </div>
+
+    <% end %>
+  </div>
 </div>
