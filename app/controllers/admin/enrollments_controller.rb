@@ -5,8 +5,7 @@ class Admin::EnrollmentsController < Admin::MainController
         @count = @enrollments.count
         respond_to do |format|
             format.html
-            format.turbo_stream { render turbo_stream: [turbo_stream.update('counter', partial: 'admin/dashboard/counter'),
-                                                        turbo_stream.update('main', template: 'admin/enrollments/index')                    
+            format.turbo_stream { render turbo_stream:[turbo_stream.update('main', template: 'admin/enrollments/index')                    
                 ] }
         end
 
