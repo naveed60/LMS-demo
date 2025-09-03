@@ -15,9 +15,14 @@
           onmouseout: "this.style.backgroundColor='transparent'; this.style.color='#fff';" %>
 
       <%= link_to 'Login as Teacher', new_teacher_session_path,
-          style: "background-color:#ffc107; border:2px solid #ffc107; color:#212529; padding:0.5rem 1.5rem; border-radius:50rem; font-weight:600; text-decoration:none; transition:all 0.3s ease-in-out;",
-          onmouseover: "this.style.backgroundColor='#e0a800'; this.style.borderColor='#e0a800';",
-          onmouseout: "this.style.backgroundColor='#ffc107'; this.style.borderColor='#ffc107';" %>
+          style: "background-color:transparent; border:2px solid #fff; color:#fff; padding:0.5rem 1.5rem; border-radius:50rem; font-weight:600; text-decoration:none; transition:all 0.3s ease-in-out;",
+          onmouseover: "this.style.backgroundColor='#fff'; this.style.color='#2575fc';",
+          onmouseout: "this.style.backgroundColor='transparent'; this.style.color='#fff';" %>
+
+      <%= link_to 'Login as Admin', new_admin_session_path,
+           style: "background-color:transparent; border:2px solid #fff; color:#fff; padding:0.5rem 1.5rem; border-radius:50rem; font-weight:600; text-decoration:none; transition:all 0.3s ease-in-out;",
+          onmouseover: "this.style.backgroundColor='#fff'; this.style.color='#2575fc';",
+          onmouseout: "this.style.backgroundColor='transparent'; this.style.color='#fff';" %>
     </div>
   </div>
 </div>

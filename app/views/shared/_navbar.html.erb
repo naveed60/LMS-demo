@@ -86,7 +86,7 @@
               <li><%= link_to 'Teacher', new_teacher_session_path, class: 'dropdown-item' %></li>
             </ul>
             <script>
-              document.addEventListener("DOMContentLoaded", function() {
+              document.addEventListener("turbo:load", function() {
                 var dropdown = document.getElementById("loginDropdown");
                 var menu = dropdown.nextElementSibling;
                 dropdown.parentElement.addEventListener("mouseenter", function() {
