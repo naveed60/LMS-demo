@@ -1,39 +1,48 @@
-<%=turbo_frame_tag 'main' do%>
-<%= stylesheet_link_tag "course", "data-turbo-track": "reload" %>
+<%= turbo_frame_tag 'main' do %>
+  <%= stylesheet_link_tag "course", "data-turbo-track": "reload" %>
 
-<body>
-<center>
-<h1>Courses</h1>
-<div>
-  <p>
-    <%= link_to "Add Course", new_admin_course_path, class: "btn btn-outline-info",  
-                  style:"background-color:#6f42c1; border-color:#6f42c1;
-                   color:white; padding:0.6rem 2rem; border-radius:50rem;
-                   font-weight:600; border:none;"%>
-  </p>
-  </center>
-</div>
-<table align="center" id="enrollment" border="3" layout= "fixed" width=" 100%"  >
-<tr>
-    <th>Name</th>
-    <th>CourseCode</th>
-    <th>Edit</th>
-    <th>Delete</th>
-    
-</tr>
+  <div style="text-align:center; margin-top:1rem;">
+    <h1 style="font-weight:700; color:#343a40;">Courses</h1>
 
+    <p>
+      <%= link_to "Add Course", new_admin_course_path,
+          class: "btn btn-primary",
+          style: "background-color:#6f42c1; border-color:#6f42c1;
+                  color:white; padding:0.6rem 2rem; border-radius:50rem;
+                  font-weight:600; border:none;" %>
+    </p>
+  </div>
 
-
-<% @courses.each do |c| %>
-    <tr>
-        <td><%= c.name %></td>
-        <td><%= c.coursecode%></td>
-        <td><%= link_to 'Edit', edit_admin_course_path(c), class: "btn btn-outline-info" %></td>
-        <td><%= link_to "Delete", admin_course_path(c), data: {
-                    turbo_method: :delete,
-                    turbo_confirm: "Are you sure?"
-                  }, class: "btn btn-outline-info" %></td>
-      </a>
-    </tr>
+  <div class="table-responsive" style="padding:1rem; max-width:1100px; margin:auto;">
+    <table class="table table-hover table-bordered align-middle shadow-sm"
+           style="border-radius:0.75rem; overflow:hidden; background:white; width:100%;">
+      <thead style="background:linear-gradient(90deg, #6f42c1, #8e63d4); color:white;">
+        <tr>
+          <th scope="col">Name</th>
+          <th scope="col">Course Code</th>
+          <th scope="col" style="text-align:center;">Edit</th>
+          <th scope="col" style="text-align:center;">Delete</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @courses.each do |c| %>
+          <tr>
+            <td style="font-weight:500;"><%= c.name %></td>
+            <td><%= c.coursecode %></td>
+            <td style="text-align:center;">
+              <%= link_to 'Edit', edit_admin_course_path(c),
+                  class: "btn btn-sm btn-outline-info",
+                  style: "border-radius:50rem; padding:0.3rem 1rem; font-weight:500;" %>
+            </td>
+            <td style="text-align:center;">
+              <%= link_to "Delete", admin_course_path(c),
+                  data: { turbo_method: :delete, turbo_confirm: "Are you sure?" },
+                  class: "btn btn-sm btn-outline-danger",
+                  style: "border-radius:50rem; padding:0.3rem 1rem; font-weight:500;" %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
 <% end %>
-<%end%>
