@@ -19,6 +19,7 @@ class Student < ApplicationRecord
   has_many :semesters, through: :student_semesters
 
   has_many :enrollments, dependent: :destroy
+  has_many :fees, dependent: :destroy
   
   has_one_attached :image do |attachable|
     

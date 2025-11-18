@@ -30,6 +30,8 @@ Rails.application.routes.draw do
         get :display_all_courses
         get :show_transcript
         get :show_profile
+        get :attendance
+        get :fees
         post :upload_image
       end
     end
