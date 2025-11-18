@@ -1,0 +1,32 @@
+<div class="container my-5">
+  <h2 class="mb-4 text-center fw-bold">Fees</h2>
+
+  <div class="table-responsive shadow-sm rounded-4 overflow-hidden" style="max-width:1100px; margin:auto;">
+    <table class="table table-hover table-bordered align-middle mb-0 text-center"
+           style="border-radius:1rem; overflow:hidden; background:white;">
+      <thead style="background:linear-gradient(90deg, #6f42c1, #8e63d4); color:white;">
+        <tr>
+          <th scope="col">ID</th>
+          <th scope="col">Description</th>
+          <th scope="col">Amount</th>
+          <th scope="col">Due Date</th>
+          <th scope="col">Paid On</th>
+          <th scope="col">Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @fees.each do |fee| %>
+          <tr>
+            <td class="fw-semibold"><%= fee.id %></td>
+            <td><%= fee.description.presence || "Fee" %></td>
+            <td><%= number_to_currency(fee.amount) %></td>
+            <td><%= fee.due_date&.strftime("%d %b %Y") || "-" %></td>
+            <td><%= fee.paid_on&.strftime("%d %b %Y") || "-" %></td>
+            <td><%= fee.status.titleize %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>
+
