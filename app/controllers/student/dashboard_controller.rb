@@ -16,6 +16,18 @@ class Student::DashboardController < ApplicationController
     def display_all_courses
         @enrollments=current_student.semesters.where(id:current_student.student_semesters.last.semester_id)[0].enrollments.where(student_id:current_student.id)
     end
+
+    def attendance
+        @attendances = Attendance.joins(:enrollment)
+                                 .where(enrollments: { student_id: current_student.id })
+                                 .includes(enrollment: [:semester, section: :course])
+                                 .order(date: :desc)
+    end
+
+    def fees
+        @fees = current_student.fees.order(due_date: :asc)
+    end
+
     def upload_image
         @student=Student.find(current_student.id)
         if @student.image.attach(params[:image])
