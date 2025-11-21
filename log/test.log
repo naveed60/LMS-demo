@@ -1,0 +1,158 @@
+  [1m[36mActiveRecord::InternalMetadata Load (1.5ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "schema_sha1"]]
+  [1m[36mActiveRecord::SchemaMigration Load (1.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.7ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "schema_sha1"]]
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.7ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "environment"]]
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "environment"]]
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "environment"]]
+  [1m[35m (33.6ms)[0m  [1m[35mDROP DATABASE IF EXISTS "LMS_test"[0m
+  [1m[35m (71.1ms)[0m  [1m[35mCREATE DATABASE "LMS_test" ENCODING = 'unicode'[0m
+  [1m[35mSQL (7.9ms)[0m  [1m[35mCREATE EXTENSION IF NOT EXISTS "plpgsql"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "active_storage_attachments" CASCADE[0m
+  [1m[35m (5.3ms)[0m  [1m[35mCREATE TABLE "active_storage_attachments" ("id" bigserial primary key, "name" character varying NOT NULL, "record_type" character varying NOT NULL, "record_id" bigint NOT NULL, "blob_id" bigint NOT NULL, "created_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (1.6ms)[0m  [1m[35mCREATE INDEX "index_active_storage_attachments_on_blob_id" ON "active_storage_attachments" ("blob_id")[0m
+  [1m[35m (1.9ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_active_storage_attachments_uniqueness" ON "active_storage_attachments" ("record_type", "record_id", "name", "blob_id")[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE IF EXISTS "active_storage_blobs" CASCADE[0m
+  [1m[35m (3.7ms)[0m  [1m[35mCREATE TABLE "active_storage_blobs" ("id" bigserial primary key, "key" character varying NOT NULL, "filename" character varying NOT NULL, "content_type" character varying, "metadata" text, "service_name" character varying NOT NULL, "byte_size" bigint NOT NULL, "checksum" character varying, "created_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (1.3ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_active_storage_blobs_on_key" ON "active_storage_blobs" ("key")[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "active_storage_variant_records" CASCADE[0m
+  [1m[35m (3.1ms)[0m  [1m[35mCREATE TABLE "active_storage_variant_records" ("id" bigserial primary key, "blob_id" bigint NOT NULL, "variation_digest" character varying NOT NULL)[0m
+  [1m[35m (1.1ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_active_storage_variant_records_uniqueness" ON "active_storage_variant_records" ("blob_id", "variation_digest")[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "admins" CASCADE[0m
+  [1m[35m (2.8ms)[0m  [1m[35mCREATE TABLE "admins" ("id" bigserial primary key, "email" character varying DEFAULT '' NOT NULL, "encrypted_password" character varying DEFAULT '' NOT NULL, "reset_password_token" character varying, "reset_password_sent_at" timestamp(6), "remember_created_at" timestamp(6), "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (1.2ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_admins_on_email" ON "admins" ("email")[0m
+  [1m[35m (1.4ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_admins_on_reset_password_token" ON "admins" ("reset_password_token")[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE IF EXISTS "attendances" CASCADE[0m
+  [1m[35m (3.3ms)[0m  [1m[35mCREATE TABLE "attendances" ("id" bigserial primary key, "enrollment_id" bigint NOT NULL, "date" date NOT NULL, "status" character varying DEFAULT 'present' NOT NULL, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (1.1ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_attendances_on_enrollment_id_and_date" ON "attendances" ("enrollment_id", "date")[0m
+  [1m[35m (1.0ms)[0m  [1m[35mCREATE INDEX "index_attendances_on_enrollment_id" ON "attendances" ("enrollment_id")[0m
+  [1m[35m (0.3ms)[0m  [1m[35mDROP TABLE IF EXISTS "batches" CASCADE[0m
+  [1m[35m (2.2ms)[0m  [1m[35mCREATE TABLE "batches" ("id" bigserial primary key, "batch_number" bigint, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE IF EXISTS "courses" CASCADE[0m
+  [1m[35m (3.4ms)[0m  [1m[35mCREATE TABLE "courses" ("id" bigserial primary key, "name" character varying, "coursecode" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE IF EXISTS "enrollments" CASCADE[0m
+  [1m[35m (2.5ms)[0m  [1m[35mCREATE TABLE "enrollments" ("id" bigserial primary key, "semester_id" bigint NOT NULL, "section_id" bigint NOT NULL, "student_id" bigint NOT NULL, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, "grade_id" bigint DEFAULT 11)[0m
+  [1m[35m (1.4ms)[0m  [1m[35mCREATE INDEX "index_enrollments_on_grade_id" ON "enrollments" ("grade_id")[0m
+  [1m[35m (1.0ms)[0m  [1m[35mCREATE INDEX "index_enrollments_on_section_id" ON "enrollments" ("section_id")[0m
+  [1m[35m (1.1ms)[0m  [1m[35mCREATE INDEX "index_enrollments_on_semester_id" ON "enrollments" ("semester_id")[0m
+  [1m[35m (1.0ms)[0m  [1m[35mCREATE INDEX "index_enrollments_on_student_id" ON "enrollments" ("student_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "expertises" CASCADE[0m
+  [1m[35m (1.6ms)[0m  [1m[35mCREATE TABLE "expertises" ("id" bigserial primary key, "course_id" bigint NOT NULL, "teacher_id" bigint NOT NULL, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (1.2ms)[0m  [1m[35mCREATE INDEX "index_expertises_on_course_id" ON "expertises" ("course_id")[0m
+  [1m[35m (1.0ms)[0m  [1m[35mCREATE INDEX "index_expertises_on_teacher_id" ON "expertises" ("teacher_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "fees" CASCADE[0m
+  [1m[35m (2.8ms)[0m  [1m[35mCREATE TABLE "fees" ("id" bigserial primary key, "student_id" bigint NOT NULL, "amount" decimal(10,2) DEFAULT 0.0 NOT NULL, "due_date" date, "paid_on" date, "status" character varying DEFAULT 'unpaid' NOT NULL, "description" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (1.1ms)[0m  [1m[35mCREATE INDEX "index_fees_on_student_id" ON "fees" ("student_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "grades" CASCADE[0m
+  [1m[35m (2.4ms)[0m  [1m[35mCREATE TABLE "grades" ("id" bigserial primary key, "letter" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "posts" CASCADE[0m
+  [1m[35m (2.9ms)[0m  [1m[35mCREATE TABLE "posts" ("id" bigserial primary key, "title" character varying, "body" text, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "sections" CASCADE[0m
+  [1m[35m (2.9ms)[0m  [1m[35mCREATE TABLE "sections" ("id" bigserial primary key, "semester_id" bigint NOT NULL, "teacher_id" bigint NOT NULL, "course_id" bigint NOT NULL, "name" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (1.1ms)[0m  [1m[35mCREATE INDEX "index_sections_on_course_id" ON "sections" ("course_id")[0m
+  [1m[35m (1.1ms)[0m  [1m[35mCREATE INDEX "index_sections_on_semester_id" ON "sections" ("semester_id")[0m
+  [1m[35m (1.1ms)[0m  [1m[35mCREATE INDEX "index_sections_on_teacher_id" ON "sections" ("teacher_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "semesters" CASCADE[0m
+  [1m[35m (2.5ms)[0m  [1m[35mCREATE TABLE "semesters" ("id" bigserial primary key, "semester_type" character varying, "semester_number" integer, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "student_semesters" CASCADE[0m
+  [1m[35m (2.0ms)[0m  [1m[35mCREATE TABLE "student_semesters" ("id" bigserial primary key, "student_id" bigint NOT NULL, "semester_id" bigint NOT NULL, "year" integer, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (1.4ms)[0m  [1m[35mCREATE INDEX "index_student_semesters_on_semester_id" ON "student_semesters" ("semester_id")[0m
+  [1m[35m (0.9ms)[0m  [1m[35mCREATE INDEX "index_student_semesters_on_student_id" ON "student_semesters" ("student_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "students" CASCADE[0m
+  [1m[35m (3.0ms)[0m  [1m[35mCREATE TABLE "students" ("id" bigserial primary key, "email" character varying DEFAULT '' NOT NULL, "encrypted_password" character varying DEFAULT '' NOT NULL, "reset_password_token" character varying, "reset_password_sent_at" timestamp(6), "remember_created_at" timestamp(6), "name" character varying, "father_name" character varying, "dob" timestamp(6), "phone_number" bigint, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, "batch_id" bigint NOT NULL)[0m
+  [1m[35m (1.0ms)[0m  [1m[35mCREATE INDEX "index_students_on_batch_id" ON "students" ("batch_id")[0m
+  [1m[35m (0.9ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_students_on_email" ON "students" ("email")[0m
+  [1m[35m (1.0ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_students_on_reset_password_token" ON "students" ("reset_password_token")[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "teachers" CASCADE[0m
+  [1m[35m (3.0ms)[0m  [1m[35mCREATE TABLE "teachers" ("id" bigserial primary key, "email" character varying DEFAULT '' NOT NULL, "encrypted_password" character varying DEFAULT '' NOT NULL, "reset_password_token" character varying, "reset_password_sent_at" timestamp(6), "remember_created_at" timestamp(6), "name" character varying, "father_name" character varying, "address" character varying, "phone_number" bigint, "dob" timestamp(6), "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (1.2ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_teachers_on_email" ON "teachers" ("email")[0m
+  [1m[35m (1.7ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_teachers_on_reset_password_token" ON "teachers" ("reset_password_token")[0m
+  [1m[35m (1.6ms)[0m  [1m[35mALTER TABLE "active_storage_attachments" ADD CONSTRAINT "fk_rails_c3b3935057"
+FOREIGN KEY ("blob_id")
+  REFERENCES "active_storage_blobs" ("id")
+[0m
+  [1m[35m (0.9ms)[0m  [1m[35mALTER TABLE "active_storage_variant_records" ADD CONSTRAINT "fk_rails_993965df05"
+FOREIGN KEY ("blob_id")
+  REFERENCES "active_storage_blobs" ("id")
+[0m
+  [1m[35m (1.1ms)[0m  [1m[35mALTER TABLE "attendances" ADD CONSTRAINT "fk_rails_4877a7c143"
+FOREIGN KEY ("enrollment_id")
+  REFERENCES "enrollments" ("id")
+[0m
+  [1m[35m (0.9ms)[0m  [1m[35mALTER TABLE "enrollments" ADD CONSTRAINT "fk_rails_6e4789b133"
+FOREIGN KEY ("section_id")
+  REFERENCES "sections" ("id")
+[0m
+  [1m[35m (0.9ms)[0m  [1m[35mALTER TABLE "enrollments" ADD CONSTRAINT "fk_rails_58e9545e48"
+FOREIGN KEY ("semester_id")
+  REFERENCES "semesters" ("id")
+[0m
+  [1m[35m (0.9ms)[0m  [1m[35mALTER TABLE "enrollments" ADD CONSTRAINT "fk_rails_f01c555e06"
+FOREIGN KEY ("student_id")
+  REFERENCES "students" ("id")
+[0m
+  [1m[35m (0.8ms)[0m  [1m[35mALTER TABLE "expertises" ADD CONSTRAINT "fk_rails_a511120e12"
+FOREIGN KEY ("course_id")
+  REFERENCES "courses" ("id")
+[0m
+  [1m[35m (0.9ms)[0m  [1m[35mALTER TABLE "expertises" ADD CONSTRAINT "fk_rails_d4ad82ade2"
+FOREIGN KEY ("teacher_id")
+  REFERENCES "teachers" ("id")
+[0m
+  [1m[35m (0.8ms)[0m  [1m[35mALTER TABLE "fees" ADD CONSTRAINT "fk_rails_3ae191b835"
+FOREIGN KEY ("student_id")
+  REFERENCES "students" ("id")
+[0m
+  [1m[35m (0.7ms)[0m  [1m[35mALTER TABLE "sections" ADD CONSTRAINT "fk_rails_20b1e5de46"
+FOREIGN KEY ("course_id")
+  REFERENCES "courses" ("id")
+[0m
+  [1m[35m (0.7ms)[0m  [1m[35mALTER TABLE "sections" ADD CONSTRAINT "fk_rails_1356ba550a"
+FOREIGN KEY ("semester_id")
+  REFERENCES "semesters" ("id")
+[0m
+  [1m[35m (0.7ms)[0m  [1m[35mALTER TABLE "sections" ADD CONSTRAINT "fk_rails_5c9f78d12f"
+FOREIGN KEY ("teacher_id")
+  REFERENCES "teachers" ("id")
+[0m
+  [1m[35m (1.1ms)[0m  [1m[35mALTER TABLE "student_semesters" ADD CONSTRAINT "fk_rails_60fe975269"
+FOREIGN KEY ("semester_id")
+  REFERENCES "semesters" ("id")
+[0m
+  [1m[35m (0.7ms)[0m  [1m[35mALTER TABLE "student_semesters" ADD CONSTRAINT "fk_rails_2d25474d35"
+FOREIGN KEY ("student_id")
+  REFERENCES "students" ("id")
+[0m
+  [1m[35m (0.8ms)[0m  [1m[35mALTER TABLE "students" ADD CONSTRAINT "fk_rails_5ad7a35b99"
+FOREIGN KEY ("batch_id")
+  REFERENCES "batches" ("id")
+[0m
+  [1m[35m (2.1ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.5ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES (20241118000200)[0m
+  [1m[35m (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES
+(20241118000100),
+(20240306061837),
+(20230131120519),
+(20230112063155),
+(20230112061633),
+(20230111064049),
+(20230109130729),
+(20230109130147),
+(20230109053508),
+(20230109051700),
+(20230106120351),
+(20230106115944),
+(20230106095322),
+(20230105132033),
+(20230104132753),
+(20230104124229);[0m
+  [1m[35m (2.6ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.6ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "environment"]]
+  [1m[36mActiveRecord::InternalMetadata Create (0.4ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ('environment', 'test', '2025-11-21 14:07:15.889297', '2025-11-21 14:07:15.889302') RETURNING "key"[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "environment"]]
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "schema_sha1"]]
+  [1m[36mActiveRecord::InternalMetadata Create (0.3ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ('schema_sha1', '992d50ff6cc9daccff7022270afbc71c364b4281', '2025-11-21 14:07:15.891498', '2025-11-21 14:07:15.891501') RETURNING "key"[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
