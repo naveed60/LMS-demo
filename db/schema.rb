@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_03_06_061837) do
+ActiveRecord::Schema[7.2].define(version: 2024_11_18_000200) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -54,6 +54,16 @@ ActiveRecord::Schema[7.0].define(version: 2024_03_06_061837) do
     t.index ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true
   end
 
+  create_table "attendances", force: :cascade do |t|
+    t.bigint "enrollment_id", null: false
+    t.date "date", null: false
+    t.string "status", default: "present", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["enrollment_id", "date"], name: "index_attendances_on_enrollment_id_and_date", unique: true
+    t.index ["enrollment_id"], name: "index_attendances_on_enrollment_id"
+  end
+
   create_table "batches", force: :cascade do |t|
     t.bigint "batch_number"
     t.datetime "created_at", null: false
@@ -87,6 +97,18 @@ ActiveRecord::Schema[7.0].define(version: 2024_03_06_061837) do
     t.datetime "updated_at", null: false
     t.index ["course_id"], name: "index_expertises_on_course_id"
     t.index ["teacher_id"], name: "index_expertises_on_teacher_id"
+  end
+
+  create_table "fees", force: :cascade do |t|
+    t.bigint "student_id", null: false
+    t.decimal "amount", precision: 10, scale: 2, default: "0.0", null: false
+    t.date "due_date"
+    t.date "paid_on"
+    t.string "status", default: "unpaid", null: false
+    t.string "description"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["student_id"], name: "index_fees_on_student_id"
   end
 
   create_table "grades", force: :cascade do |t|
@@ -168,11 +190,13 @@ ActiveRecord::Schema[7.0].define(version: 2024_03_06_061837) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "attendances", "enrollments"
   add_foreign_key "enrollments", "sections"
   add_foreign_key "enrollments", "semesters"
   add_foreign_key "enrollments", "students"
   add_foreign_key "expertises", "courses"
   add_foreign_key "expertises", "teachers"
+  add_foreign_key "fees", "students"
   add_foreign_key "sections", "courses"
   add_foreign_key "sections", "semesters"
   add_foreign_key "sections", "teachers"

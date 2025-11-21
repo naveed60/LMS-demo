@@ -1,0 +1,20 @@
+/* Remove container padding, force full width */
+.navbar {
+    margin: 0 !important;
+    width: 100% !important;
+}
+
+.container-fluid {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+}
+
+/* Hover dropdown (Bootstrap 5) */
+.nav-item.dropdown:hover .dropdown-menu {
+    display: block !important;
+}
+
+.nav-item.dropdown .dropdown-menu {
+    margin-top: 0 !important;
+    /* Align nicely */
+}
