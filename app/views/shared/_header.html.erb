@@ -1,16 +1,33 @@
-<header class="bg-primary text-white py-3">
-  <div class="container-fluid d-flex align-items-center justify-content-between">
-    <%= link_to "LMS Demo", root_path, class: "navbar-brand" %>
-    <nav>
-      <%= link_to "Courses", courses_path, class: "nav-link text-white" %>
-      <%= link_to "Dashboard", dashboard_path, class: "nav-link text-white" %>
+<header class="app-header">
+  <div class="app-header__content container d-flex align-items-center justify-content-between">
+    <div class="app-header__brand">
+      <%= link_to "LMS Demo", root_path, class: "app-header__logo" %>
+      <span class="app-header__tagline">Unified learning experience</span>
+    </div>
+    <nav class="app-header__nav">
+      <%= link_to "Courses", nav_courses_path, class: "app-header__link" %>
+      <%= link_to "Dashboard", nav_dashboard_path, class: "app-header__link" %>
     </nav>
-    <div>
-      <% if user_signed_in? %>
-        <%= link_to current_user.email, edit_user_registration_path, class: "text-white me-2" %>
-        <%= button_to "Logout", destroy_user_session_path, method: :delete, class: "btn btn-secondary" %>
+    <div class="app-header__account">
+      <% if nav_signed_in? %>
+        <% current_account = nav_current_account %>
+        <% if current_account %>
+          <% edit_path = nav_edit_registration_path %>
+          <% if edit_path %>
+            <%= link_to current_account.email, edit_path, class: "app-header__email" %>
+          <% else %>
+            <span class="app-header__email"><%= current_account.email %></span>
+          <% end %>
+        <% end %>
+        <% logout_path = nav_logout_path %>
+        <% if logout_path %>
+          <%= button_to "Logout", logout_path,
+              method: :delete,
+              class: "app-header__logout-button",
+              form: { class: "app-header__logout-form" } %>
+        <% end %>
       <% else %>
-        <%= link_to "Login", new_user_session_path, class: "btn btn-secondary" %>
+        <%= link_to "Login", root_path, class: "app-header__login-button" %>
       <% end %>
     </div>
   </div>

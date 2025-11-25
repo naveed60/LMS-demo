@@ -1,0 +1,19 @@
+/* line 1, app/assets/stylesheets/course.css.scss */
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 70%;
+  margin-bottom: 100px;
+}
+
+/* line 8, app/assets/stylesheets/course.css.scss */
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+/* line 14, app/assets/stylesheets/course.css.scss */
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
