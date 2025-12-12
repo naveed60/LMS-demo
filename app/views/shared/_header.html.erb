@@ -5,8 +5,10 @@
       <span class="app-header__tagline">Unified learning experience</span>
     </div>
     <nav class="app-header__nav">
-      <%= link_to "Courses", nav_courses_path, class: "app-header__link" %>
-      <%= link_to "Dashboard", nav_dashboard_path, class: "app-header__link" %>
+      <% if nav_signed_in? %>
+        <%= link_to "Courses", nav_courses_path, class: "app-header__link" %>
+        <%= link_to "Dashboard", nav_dashboard_path, class: "app-header__link" %>
+      <% end %>
     </nav>
     <div class="app-header__account">
       <% if nav_signed_in? %>
