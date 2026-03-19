@@ -1,5 +1,5 @@
-<section class="home-hero">
-  <div class="home-hero__inner container">
+<section class="home-hero container">
+  <div class="home-hero__inner">
     <header class="home-hero__header">
       <p class="home-hero__eyebrow">Student Dashboard</p>
       <nav class="home-hero__nav">
@@ -32,7 +32,7 @@
       ] %>
 
       <% features.each do |feature| %>
-        <div class="col-md-4">
+        <div class="home-feature-grid__col col-12 col-md-4">
           <article class="home-feature-card">
             <div class="home-feature-card__icon"><%= feature[:icon] %></div>
             <h3 class="home-feature-card__title"><%= feature[:title] %></h3>

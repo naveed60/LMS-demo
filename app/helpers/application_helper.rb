@@ -55,4 +55,23 @@ module ApplicationHelper
   def nav_logout_path
     nav_path_helper('destroy', 'session')
   end
+
+  def nav_login_path
+    case controller_path
+    when /^admin\//
+      new_admin_session_path
+    when /^teacher\//
+      new_teacher_session_path
+    else
+      new_student_session_path
+    end
+  end
+
+  def nav_register_path
+    return new_admin_registration_path if respond_to?(:new_admin_registration_path)
+    return new_student_registration_path if respond_to?(:new_student_registration_path)
+    return new_teacher_registration_path if respond_to?(:new_teacher_registration_path)
+
+    root_path
+  end
 end

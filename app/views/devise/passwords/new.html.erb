@@ -1,16 +1,50 @@
-<h2>Forgot your password?</h2>
+<section class="auth-register">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-12 col-md-10 col-lg-7 col-xl-6">
+        <div class="card auth-register__card border-0 shadow-lg">
+          <div class="card-body p-4 p-md-5">
+            <div class="text-center mb-4">
+              <span class="auth-register__icon bi bi-key-fill"></span>
+              <h2 class="auth-register__title mt-3 mb-1">Forgot Password</h2>
+              <p class="auth-register__subtitle mb-0">
+                Enter your email and we will send password reset instructions.
+              </p>
+            </div>
 
-<%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
-  <%= render "devise/shared/error_messages", resource: resource %>
+            <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post, class: "auth-register__form" }) do |f| %>
+              <% if resource.errors.any? %>
+                <div class="alert alert-danger" role="alert">
+                  <strong class="d-block mb-1">Please fix the following:</strong>
+                  <ul class="mb-0 ps-3">
+                    <% resource.errors.full_messages.each do |message| %>
+                      <li><%= message %></li>
+                    <% end %>
+                  </ul>
+                </div>
+              <% end %>
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+              <div class="mb-4">
+                <%= f.label :email, class: "form-label fw-semibold" %>
+                <%= f.email_field :email,
+                    autofocus: true,
+                    autocomplete: "email",
+                    class: "form-control form-control-lg",
+                    placeholder: "you@example.com" %>
+              </div>
+
+              <%= f.submit "Send reset instructions", class: "btn btn-primary btn-lg w-100 auth-register__submit" %>
+            <% end %>
+
+            <div class="text-center mt-4 d-flex flex-column gap-2">
+              <%= link_to "Back to login", new_session_path(resource_name), class: "auth-register__login-link" %>
+              <% if devise_mapping.registerable? %>
+                <%= link_to "Create a new account", new_registration_path(resource_name), class: "auth-register__login-link" %>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
-
-  <div class="actions">
-    <%= f.submit "Send me reset password instructions" %>
-  </div>
-<% end %>
-
-<%= render "devise/shared/links" %>
+</section>
