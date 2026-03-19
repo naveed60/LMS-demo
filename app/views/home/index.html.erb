@@ -1,22 +1,96 @@
+<%
+  if admin_signed_in?
+    hero_eyebrow = "Admin Dashboard"
+    hero_title = "Welcome to Admin Dashboard"
+    hero_subtitle = "Manage students, teachers, courses, and enrollments from one place."
+    hero_nav_links = [
+      { label: "Students", path: admin_students_path },
+      { label: "Teachers", path: admin_teachers_path },
+      { label: "Courses", path: admin_courses_path },
+      { label: "Enrollments", path: admin_enrollments_path }
+    ]
+    hero_actions = [
+      { label: "Open Admin Dashboard", path: admin_dashboard_index_path },
+      { label: "Manage Courses", path: admin_courses_path }
+    ]
+    features = [
+      { icon: "👩‍🎓", title: "Students", text: "View, add, and manage student records efficiently." },
+      { icon: "🧑‍🏫", title: "Teachers", text: "Maintain faculty profiles and teacher assignments." },
+      { icon: "📊", title: "Reports", text: "Track academic activity and performance insights." }
+    ]
+  elsif teacher_signed_in?
+    hero_eyebrow = "Teacher Dashboard"
+    hero_title = "Welcome to Teacher Dashboard"
+    hero_subtitle = "Manage your classes, monitor progress, and stay connected with students."
+    hero_nav_links = [
+      { label: "Profile", path: show_profile_teacher_dashboard_index_path },
+      { label: "Courses", path: courses_teacher_dashboard_index_path },
+      { label: "Past Courses", path: past_courses_teacher_dashboard_index_path }
+    ]
+    hero_actions = [
+      { label: "Open Teacher Dashboard", path: teacher_dashboard_index_path },
+      { label: "Manage Courses", path: courses_teacher_dashboard_index_path }
+    ]
+    features = [
+      { icon: "📘", title: "Current Courses", text: "Access and manage your active courses." },
+      { icon: "🗂️", title: "Past Courses", text: "Review previously taught courses and progress." },
+      { icon: "👤", title: "Profile", text: "Keep your professional information up to date." }
+    ]
+  elsif student_signed_in?
+    hero_eyebrow = "Student Dashboard"
+    hero_title = "Welcome to Student Dashboard"
+    hero_subtitle = "Your personalized gateway to learning, teaching, and academic success."
+    hero_nav_links = [
+      { label: "Profile", path: show_profile_student_dashboard_index_path },
+      { label: "Courses", path: display_all_courses_student_dashboard_index_path },
+      { label: "Transcript", path: show_transcript_student_dashboard_index_path },
+      { label: "Attendance", path: attendance_student_dashboard_index_path },
+      { label: "Fees", path: fees_student_dashboard_index_path }
+    ]
+    hero_actions = [
+      { label: "Open Student Dashboard", path: student_dashboard_index_path },
+      { label: "View Courses", path: display_all_courses_student_dashboard_index_path }
+    ]
+    features = [
+      { icon: "📚", title: "Courses", text: "Browse and manage all your course enrollments." },
+      { icon: "🧑‍🏫", title: "Teachers", text: "Connect with experienced educators and mentors." },
+      { icon: "🎓", title: "Progress", text: "Track grades and academic milestones in real time." }
+    ]
+  else
+    hero_eyebrow = "LMS Portal"
+    hero_title = "Welcome to the LMS"
+    hero_subtitle = "Your personalized gateway to learning, teaching, and academic success."
+    hero_nav_links = []
+    hero_actions = [
+      { label: "Login as Student", path: new_student_session_path },
+      { label: "Login as Teacher", path: new_teacher_session_path },
+      { label: "Login as Admin", path: new_admin_session_path }
+    ]
+    features = [
+      { icon: "📚", title: "Courses", text: "Browse and manage all your course enrollments." },
+      { icon: "🧑‍🏫", title: "Teachers", text: "Connect with experienced educators and mentors." },
+      { icon: "🎓", title: "Progress", text: "Track grades and academic milestones in real time." }
+    ]
+  end
+%>
+
 <section class="home-hero container">
   <div class="home-hero__inner">
     <header class="home-hero__header">
-      <p class="home-hero__eyebrow">Student Dashboard</p>
+      <p class="home-hero__eyebrow"><%= hero_eyebrow %></p>
       <nav class="home-hero__nav">
-        <%= link_to 'Profile', show_profile_student_dashboard_index_path, class: 'home-hero__nav-link' %>
-        <%= link_to 'Courses', display_all_courses_student_dashboard_index_path, class: 'home-hero__nav-link' %>
-        <%= link_to 'Transcript', show_transcript_student_dashboard_index_path, class: 'home-hero__nav-link' %>
-        <%= link_to 'Attendance', attendance_student_dashboard_index_path, class: 'home-hero__nav-link' %>
-        <%= link_to 'Fees', fees_student_dashboard_index_path, class: 'home-hero__nav-link' %>
+        <% hero_nav_links.each do |link| %>
+          <%= link_to link[:label], link[:path], class: 'home-hero__nav-link' %>
+        <% end %>
       </nav>
     </header>
     <div class="home-hero__content text-center">
-      <h1 class="home-hero__title">Welcome to the LMS</h1>
-      <p class="home-hero__subtitle">Your personalized gateway to learning, teaching, and academic success.</p>
+      <h1 class="home-hero__title"><%= hero_title %></h1>
+      <p class="home-hero__subtitle"><%= hero_subtitle %></p>
       <div class="home-hero__actions">
-        <%= link_to 'Login as Student', new_student_session_path, class: 'home-hero__action-button' %>
-        <%= link_to 'Login as Teacher', new_teacher_session_path, class: 'home-hero__action-button' %>
-        <%= link_to 'Login as Admin', new_admin_session_path, class: 'home-hero__action-button' %>
+        <% hero_actions.each do |action| %>
+          <%= link_to action[:label], action[:path], class: 'home-hero__action-button' %>
+        <% end %>
       </div>
     </div>
   </div>
@@ -25,12 +99,6 @@
 <section class="home-feature-grid">
   <div class="container">
     <div class="home-feature-grid__row row g-4 justify-content-center">
-      <% features = [
-        { icon: "📚", title: "Courses", text: "Browse and manage all your course enrollments." },
-        { icon: "🧑‍🏫", title: "Teachers", text: "Connect with experienced educators and mentors." },
-        { icon: "🎓", title: "Progress", text: "Track grades and academic milestones in real time." }
-      ] %>
-
       <% features.each do |feature| %>
         <div class="home-feature-grid__col col-12 col-md-4">
           <article class="home-feature-card">
