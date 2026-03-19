@@ -1,0 +1,15 @@
+# Dependency directories
+node_modules/
+
+# Logs
+log/*
+!log/.keep
+
+# Runtime and cache files
+tmp/*
+!tmp/.keep
+
+# Compiled/precompiled assets
+public/assets/*
+!public/assets/.keep
+

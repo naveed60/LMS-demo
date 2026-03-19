@@ -29,7 +29,8 @@
               form: { class: "app-header__logout-form" } %>
         <% end %>
       <% else %>
-        <%= link_to "Login", root_path, class: "app-header__login-button" %>
+        <%= link_to "Register User", nav_register_path, class: "app-header__register-button" %>
+        <%= link_to "Login", nav_login_path, class: "app-header__login-button" %>
       <% end %>
     </div>
   </div>

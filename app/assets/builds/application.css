@@ -20340,7 +20340,8 @@ textarea.form-control-lg {
 }
 
 .app-header__login-button,
-.app-header__logout-button {
+.app-header__logout-button,
+.app-header__register-button {
   border-radius: 999px;
   padding: 0.35rem 1.35rem;
   background-color: rgba(255, 255, 255, 0.15);
@@ -20350,14 +20351,16 @@ textarea.form-control-lg {
   font-size: 0.9rem;
   text-transform: uppercase;
   letter-spacing: 0.05rem;
-  transition: background-color 0.2s ease-in-out, border-color 0.2s ease-in-out;
+  transition: background-color 0.2s ease-in-out, border-color 0.2s ease-in-out, transform 0.2s ease-in-out;
   text-decoration: none;
 }
 
 .app-header__logout-button:hover,
-.app-header__login-button:hover {
+.app-header__login-button:hover,
+.app-header__register-button:hover {
   background-color: rgba(255, 255, 255, 0.3);
   border-color: rgba(255, 255, 255, 0.7);
+  transform: translateY(-1px);
 }
 
 .app-header__logout-form {
@@ -20393,6 +20396,7 @@ textarea.form-control-lg {
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
+  padding-inline: clamp(1rem, 2.4vw, 2rem);
 }
 
 .home-hero__header {
@@ -20414,6 +20418,8 @@ textarea.form-control-lg {
   display: flex;
   flex-wrap: wrap;
   gap: 1rem;
+  justify-content: flex-end;
+  max-width: 100%;
 }
 
 .home-hero__nav-link {
@@ -20421,6 +20427,7 @@ textarea.form-control-lg {
   text-decoration: none;
   font-weight: 600;
   font-size: 0.95rem;
+  white-space: nowrap;
 }
 
 .home-hero__nav-link:hover {
@@ -20462,12 +20469,22 @@ textarea.form-control-lg {
   font-weight: 600;
   text-transform: capitalize;
   letter-spacing: 0.04rem;
-  transition: background-color 0.2s ease, border-color 0.2s ease;
+  text-decoration: none;
+  transition: background-color 0.2s ease, border-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 .home-hero__action-button:hover {
   background-color: rgba(255, 255, 255, 0.2);
   border-color: #fff;
+  color: #fff;
+  text-decoration: none;
+  transform: translateY(-2px);
+  box-shadow: 0 10px 20px rgba(17, 24, 39, 0.25);
+}
+
+.home-hero__action-button:focus-visible {
+  outline: 2px solid rgba(255, 255, 255, 0.9);
+  outline-offset: 2px;
 }
 
 .home-feature-grid {
@@ -20476,6 +20493,10 @@ textarea.form-control-lg {
 
 .home-feature-grid__row {
   margin-top: 1rem;
+}
+
+.home-feature-grid__col {
+  display: flex;
 }
 
 .home-feature-card {
@@ -20487,6 +20508,8 @@ textarea.form-control-lg {
   display: flex;
   flex-direction: column;
   gap: 0.85rem;
+  width: 100%;
+  height: 100%;
   box-shadow: 0 15px 35px rgba(63, 76, 114, 0.15);
 }
 
@@ -20505,6 +20528,15 @@ textarea.form-control-lg {
   flex: 1;
 }
 
+@media (max-width: 992px) {
+  .home-hero__header {
+    flex-direction: column;
+    text-align: center;
+  }
+  .home-hero__nav {
+    justify-content: center;
+  }
+}
 @media (max-width: 768px) {
   .home-hero__header {
     flex-direction: column;
@@ -20520,4 +20552,64 @@ textarea.form-control-lg {
   .home-feature-card {
     min-height: auto;
   }
+}
+.auth-register {
+  min-height: calc(100vh - 220px);
+  display: flex;
+  align-items: center;
+  padding: 2.5rem 0 3.5rem;
+}
+
+.auth-register__card {
+  border-radius: 1.25rem;
+  overflow: hidden;
+  background: radial-gradient(circle at 0% 0%, rgba(13, 110, 253, 0.12) 0%, rgba(13, 110, 253, 0) 45%), radial-gradient(circle at 100% 100%, rgba(125, 76, 252, 0.14) 0%, rgba(125, 76, 252, 0) 50%), #ffffff;
+}
+
+.auth-register__icon {
+  font-size: 2.2rem;
+  color: #256ee3;
+}
+
+.auth-register__title {
+  font-size: clamp(1.7rem, 2.6vw, 2.1rem);
+  font-weight: 700;
+  color: #111827;
+}
+
+.auth-register__subtitle {
+  color: #6b7280;
+}
+
+.auth-register__form .form-control {
+  border-radius: 0.8rem;
+  border-color: #d5dbe8;
+}
+
+.auth-register__form .form-control:focus {
+  border-color: #4f7bfb;
+  box-shadow: 0 0 0 0.2rem rgba(79, 123, 251, 0.18);
+}
+
+.auth-register__submit {
+  border-radius: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.02rem;
+  background: linear-gradient(135deg, #1f73e6, #4f7bfb);
+  border: none;
+}
+
+.auth-register__submit:hover {
+  background: linear-gradient(135deg, #1665ce, #3d6cf8);
+}
+
+.auth-register__login-link {
+  color: #256ee3;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.auth-register__login-link:hover {
+  color: #1f5ec4;
+  text-decoration: underline;
 }
