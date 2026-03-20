@@ -26,7 +26,7 @@ class Admin::CoursesController < Admin::MainController
             flash[:notice] = "Course was successfully Created."
             redirect_to admin_courses_path
         else
-            render :edit, status: :unprocessable_entity
+            render :new, status: :unprocessable_entity
         end
     end
 
