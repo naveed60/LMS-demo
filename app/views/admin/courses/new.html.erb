@@ -1,6 +1,4 @@
-<%=turbo_frame_tag 'main' do%>
-<center>
-<h2>Add Course</h2>
-<%= render 'form',course: @course %>
-</center>
-<%end%>
+<%= turbo_frame_tag 'main' do %>
+  <%= stylesheet_link_tag "course", "data-turbo-track": "reload" %>
+  <%= render "form", course: @course %>
+<% end %>

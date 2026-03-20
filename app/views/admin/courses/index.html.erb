@@ -21,38 +21,43 @@
         <table class="course-admin__table" aria-label="Courses table">
           <thead>
             <tr>
-              <th scope="col">Name</th>
+              <th scope="col">Course</th>
               <th scope="col">Course Code</th>
-              <th scope="col" class="course-admin__action-head">Edit</th>
-              <th scope="col" class="course-admin__action-head">Delete</th>
+              <th scope="col" class="course-admin__action-head">Actions</th>
             </tr>
           </thead>
           <tbody>
             <% if @courses.any? %>
               <% @courses.each do |c| %>
                 <tr>
-                  <td data-label="Name">
-                    <span class="course-admin__name"><%= c.name %></span>
+                  <td data-label="Course">
+                    <div class="course-admin__identity">
+                      <span class="course-admin__avatar"><%= c.name.to_s.first&.upcase || "C" %></span>
+                      <div>
+                        <span class="course-admin__name"><%= c.name %></span>
+                        <span class="course-admin__meta">Course ID #<%= c.id %></span>
+                      </div>
+                    </div>
                   </td>
                   <td data-label="Course Code">
                     <span class="course-admin__code"><%= c.coursecode %></span>
                   </td>
-                  <td data-label="Edit" class="course-admin__action-cell">
-                    <%= link_to "Edit",
-                        edit_admin_course_path(c),
-                        class: "course-admin__action-button course-admin__action-button--edit" %>
-                  </td>
-                  <td data-label="Delete" class="course-admin__action-cell">
-                    <%= link_to "Delete",
-                        admin_course_path(c),
-                        data: { turbo_method: :delete, turbo_confirm: "Are you sure?" },
-                        class: "course-admin__action-button course-admin__action-button--delete" %>
+                  <td data-label="Actions" class="course-admin__action-cell">
+                    <div class="course-admin__actions">
+                      <%= link_to "Edit",
+                          edit_admin_course_path(c),
+                          class: "course-admin__action-button course-admin__action-button--edit" %>
+                      <%= link_to "Delete",
+                          admin_course_path(c),
+                          data: { turbo_method: :delete, turbo_confirm: "Delete this course?" },
+                          class: "course-admin__action-button course-admin__action-button--delete" %>
+                    </div>
                   </td>
                 </tr>
               <% end %>
             <% else %>
               <tr>
-                <td colspan="4">
+                <td colspan="3">
                   <div class="course-admin__empty">
                     No courses available yet. Add your first course to get started.
                   </div>
